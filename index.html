@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ваш месяц по дате рождения</title>
+<meta name="description" content="Личный расчёт месяца по дате рождения: деньги, любовь, работа, силы. Финансовый астролог Оксана Смирнова">
+<meta name="theme-color" content="#0E0C0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Токены: тёмная роскошь, шампань, песок, приглушённое золото ===== */
+:root{
+  --bg:#0E0C0A; --bg-2:#15120F; --panel:#1A1612; --panel-2:#211C17;
+  --ink:#F3EDE3; --ink-2:rgba(243,237,227,.74); --ink-3:rgba(243,237,227,.5);
+  --line:rgba(217,194,154,.18); --line-2:rgba(217,194,154,.32);
+  --champ:#D9C29A; --gold:#C5A46D; --sand:#EFE4D0;
+  --wine-soft:rgba(122,35,56,.22);
+  --goldtext:linear-gradient(100deg,#F7E9C6 0%,#D2B176 38%,#F4E2B4 58%,#B48D52 100%);
+  --goldfill:linear-gradient(120deg,#E9D3A4 0%,#C9A766 45%,#E8D29E 70%,#B8935A 100%);
+  --r:18px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; color:var(--ink); background:var(--bg);
+  font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16px; line-height:1.7; overflow-x:hidden}
+.wrap{max-width:680px; margin:0 auto; padding:0 16px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; line-height:1.08; margin:0}
+h1{font-size:clamp(38px,9.4vw,60px)}
+h2{font-size:clamp(30px,7vw,42px)}
+h3{font-size:clamp(22px,5vw,27px)}
+.gold{background:var(--goldtext); -webkit-background-clip:text; background-clip:text; color:transparent}
+p{margin:0 0 14px; color:var(--ink-2)}
+.eyebrow{font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--champ); font-weight:600}
+.rule{display:flex; align-items:center; gap:12px; color:var(--gold); margin:0 0 14px}
+.rule:before,.rule:after{content:""; height:1px; flex:1; background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
+.rule span{font-size:10px}
+
+.hero{position:relative; background:var(--bg); overflow:hidden}
+.hero-img{position:relative; height:clamp(560px,150vw,860px)}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 12%; display:block}
+.hero-img:before{content:""; position:absolute; inset:0 0 auto 0; height:150px; z-index:1; background:linear-gradient(180deg,rgba(14,12,10,.75),transparent)}
+.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:62%; background:linear-gradient(180deg,rgba(14,12,10,0) 0%,rgba(14,12,10,.55) 35%,rgba(14,12,10,.92) 70%,var(--bg) 100%)}
+.brand{position:absolute; z-index:2; top:0; left:0; right:0}
+.brand .wrap{display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:20px}
+.brand b{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:22px; color:var(--sand); white-space:nowrap}
+.brand span{font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--champ); font-weight:600; text-align:right}
+.hero-in{position:relative; z-index:2; margin-top:-150px; padding-bottom:30px}
+.stamp{display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line-2); color:var(--champ);
+  border-radius:100px; padding:7px 16px; font-size:10px; letter-spacing:.24em; text-transform:uppercase; font-weight:600; margin-bottom:18px;
+  background:rgba(14,12,10,.45); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)}
+.hero h1{margin-bottom:16px; color:var(--sand)}
+.hero h1 em{font-style:italic}
+.hero .lede{font-size:16px; color:var(--ink-2); margin-bottom:24px}
+.hero .lede b{color:var(--sand); font-weight:600}
+.qlist{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.qlist li{display:flex; gap:14px; align-items:baseline; padding:13px 2px; border-bottom:1px solid var(--line); font-size:15px; color:var(--ink)}
+.qlist .gl{color:var(--gold); font-size:10px; flex:none}
+
+.form-sec{padding:18px 0 8px}
+.form-card{background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--line-2); border-radius:var(--r); padding:24px 20px; box-shadow:0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04)}
+label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--champ); margin-bottom:12px}
+.date-fields{display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:9px}
+.date-fields select{width:100%; padding:14px 10px; font:inherit; font-size:16px; color:var(--ink);
+  background:var(--bg-2); border:1px solid var(--line); border-radius:12px; min-height:54px;
+  appearance:none; -webkit-appearance:none; text-align:center; cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 24px, calc(100% - 10px) 24px; background-size:5px 5px,5px 5px; background-repeat:no-repeat; padding-right:26px}
+.date-fields select option{background:#1A1612; color:#F3EDE3}
+.date-fields select:focus{outline:1px solid var(--champ); border-color:transparent}
+.btn{width:100%; margin-top:16px; padding:17px 20px; font:inherit; font-size:12.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+  color:#1A140C; background:var(--goldfill); border:0; border-radius:12px; cursor:pointer; min-height:58px;
+  box-shadow:0 14px 34px rgba(197,164,109,.28), inset 0 1px 0 rgba(255,255,255,.5); transition:transform .12s ease, filter .12s ease}
+.btn:hover{filter:brightness(1.06)} .btn:active{transform:translateY(1px)}
+.note{font-size:12.5px; color:var(--ink-3); margin:14px 0 0; line-height:1.55}
+.err{color:#E3A3A3; font-size:13.5px; margin-top:10px; display:none} .err.on{display:block}
+
+.hidden{display:none}
+.res-head{margin:48px 0 24px; text-align:center}
+.res-head .sign{font-family:"Cormorant Garamond",serif; font-size:clamp(42px,10vw,60px); font-weight:600; line-height:1.05; margin:8px 0 6px}
+.res-head .meta{color:var(--ink-2); font-size:14.5px; max-width:520px; margin:0 auto}
+.sphere{background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--line); border-radius:var(--r); padding:24px 20px; margin-bottom:16px}
+.sphere-top{display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap}
+.sphere-ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:16px;flex:none;border:1px solid var(--line-2);color:var(--champ);background:rgba(217,194,154,.06)}
+.sphere h3{flex:1; min-width:130px; font-family:Montserrat,sans-serif; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.24em; color:var(--sand)}
+.tag{font-size:9.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; padding:6px 11px; border-radius:100px}
+.tag.hard{background:var(--wine-soft); color:#E7B7C1; border:1px solid rgba(122,35,56,.6)}
+.tag.easy{background:rgba(217,194,154,.1); color:var(--champ); border:1px solid var(--line-2)}
+.sphere p{font-size:15.5px}
+.sphere p b{color:var(--sand); font-weight:600}
+.dtable{width:100%; border-collapse:collapse; margin:18px 0; font-size:14.5px}
+.dtable tr{border-top:1px solid var(--line)} .dtable tr:last-child{border-bottom:1px solid var(--line)}
+.dtable td{padding:12px 0; vertical-align:top; color:var(--ink-2); line-height:1.5}
+.dtable td.d{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:19px; color:var(--champ); white-space:nowrap; width:86px; padding-right:14px; line-height:1.2}
+.todo{background:rgba(217,194,154,.07); border:1px solid var(--line); border-radius:14px; padding:18px; font-size:15px; margin-top:18px}
+.todo b{display:block; font-family:"Cormorant Garamond",serif; font-size:23px; font-weight:600; color:var(--sand); margin-bottom:6px}
+.todo p{margin:0}
+.todo .when{margin-top:12px; padding-top:12px; border-top:1px solid var(--line); font-size:14px; color:var(--ink-2)}
+.todo .when span{display:inline-block; font-weight:700; color:var(--gold); text-transform:uppercase; font-size:10px; letter-spacing:.26em; margin-right:10px}
+.ask{border-top:1px solid var(--line); margin-top:22px; padding-top:20px}
+.ask-top{font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-3); font-weight:600; margin:0 0 6px}
+.ask-intro{color:var(--champ); font-size:14.5px; margin:0 0 12px}
+.ask i{font-family:"Cormorant Garamond",serif; font-size:24px; font-style:italic; display:block; padding-left:16px; border-left:1px solid var(--gold); line-height:1.32; color:var(--sand)}
+.ask-link{display:inline-flex; align-items:center; gap:8px; margin-top:14px; color:var(--champ); font-weight:600; font-size:11px; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; border-bottom:1px solid var(--line-2); padding-bottom:3px}
+
+.bridge{position:relative; overflow:hidden; margin:48px 0; padding:34px 22px; border-radius:22px;
+  background:radial-gradient(80% 60% at 100% 0%,rgba(197,164,109,.22),transparent 60%),radial-gradient(70% 60% at 0% 100%,rgba(122,35,56,.28),transparent 65%),#120F0C;
+  border:1px solid var(--line-2)}
+.bridge .eyebrow{margin-bottom:10px}
+.bridge-title{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:clamp(30px,7.4vw,42px); line-height:1.08; margin-bottom:18px}
+.bridge b{color:var(--sand); font-weight:600}
+.bridge p:last-child{margin-bottom:0}
+.qline{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:23px; line-height:1.5; color:var(--sand); padding-left:16px; border-left:1px solid var(--gold)}
+
+.theory{margin:44px 0 24px}
+.theory h2{margin:10px 0 16px; text-align:center}
+.theory > .eyebrow{text-align:center}
+.theory b{color:var(--sand); font-weight:600}
+.compare{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:20px 0}
+@media (max-width:520px){ .compare{grid-template-columns:1fr} }
+.cmp{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px}
+.cmp.mine{border:1px solid var(--gold); background:linear-gradient(180deg,rgba(197,164,109,.12),var(--panel))}
+.cmp h3{font-size:25px; margin-bottom:8px; color:var(--sand)}
+.cmp.mine h3{background:var(--goldtext); -webkit-background-clip:text; background-clip:text; color:transparent}
+.cmp p{font-size:14.5px; margin:0}
+.quote{border-left:1px solid var(--gold); padding:4px 0 4px 18px; margin:22px 0; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:21px; line-height:1.45; color:var(--sand)}
+
+.offer{background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--line); border-radius:var(--r); padding:28px 22px; margin-bottom:18px}
+.offer.lead{border:1px solid var(--gold); box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.offer h2{margin:14px 0 14px; color:var(--sand)}
+.variant{display:inline-block; border:1px solid var(--line-2); color:var(--champ); border-radius:100px; padding:7px 16px; font-weight:600; font-size:10px; letter-spacing:.24em; text-transform:uppercase}
+.offer.lead .variant{background:var(--goldfill); color:#1A140C; border:0}
+.inc{list-style:none; margin:18px 0; padding:0; display:grid; gap:12px}
+.inc li{display:flex; gap:12px; font-size:15px; align-items:baseline; color:var(--ink)}
+.inc .ck{color:var(--gold); flex:none; font-size:10px}
+.callout{border:1px dashed var(--line-2); border-radius:12px; padding:14px 16px; margin:18px 0; font-size:14.5px; color:var(--champ)}
+.cta-hint{margin:0 0 14px; text-align:center; font-size:14.5px; color:var(--ink-2); line-height:1.55}
+.word{font-weight:700; letter-spacing:.14em; color:var(--champ)}
+.cta{display:block; text-align:center; text-decoration:none; padding:17px 20px; border-radius:12px; font-weight:700; font-size:12px; letter-spacing:.22em; text-transform:uppercase; min-height:58px; line-height:1.9}
+.cta.solid{background:var(--goldfill); color:#1A140C; box-shadow:0 14px 34px rgba(197,164,109,.25)}
+.cta.gold{background:transparent; color:var(--champ); border:1px solid var(--gold)}
+footer{border-top:1px solid var(--line); margin-top:48px; padding:28px 0 44px; color:var(--ink-3); font-size:12.5px; text-align:center}
+footer a{color:var(--champ)}
+@media (max-width:420px){ .sphere,.offer{padding:22px 17px} }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-img">
+    <img src="hero.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high">
+  </div>
+  <div class="brand"><div class="wrap"><b>Оксана Смирнова</b><span>финансовый астролог</span></div></div>
+  <div class="wrap hero-in">
+    <div class="stamp">◆ Расчёт по реальным планетам</div>
+    <h1>Ваш прогноз по дате рождения <em class="gold">на текущий месяц</em></h1>
+    <p class="lede"><b>Деньги, любовь, работа и силы.</b> Я всю жизнь работаю с деньгами и цифрами и знаю: деньги волнуют всех, даже когда их достаточно. Поэтому здесь всё по полочкам: ваш месяц по четырём сферам и конкретные дни</p>
+    <ul class="qlist">
+      <li><span class="gl">◆</span><span>Деньги в этом месяце придут или утекут</span></li>
+      <li><span class="gl">◆</span><span>В любви время сближаться или переждать</span></li>
+      <li><span class="gl">◆</span><span>В работе двигаться или притормозить</span></li>
+      <li><span class="gl">◆</span><span>Где брать силы, когда батарейка на нуле</span></li>
+    </ul>
+  </div>
+</section>
+
+<main class="wrap">
+
+<section class="form-sec">
+  <div class="form-card">
+    <form id="form" novalidate>
+      <label for="bdDay">Ваша дата рождения</label>
+      <div class="date-fields">
+        <select id="bdDay" aria-label="День" required></select>
+        <select id="bdMonth" aria-label="Месяц" required></select>
+        <select id="bdYear" aria-label="Год" required></select>
+      </div>
+      <button class="btn" type="submit">Посмотреть мой месяц</button>
+      <div class="err" id="err">Проверьте дату, кажется, такой не существует</div>
+    </form>
+    <p class="note">Время рождения не нужно. Расчёт идёт прямо в вашем телефоне: дата никуда не отправляется и нигде не сохраняется</p>
+  </div>
+</section>
+
+<section id="result" class="hidden">
+  <div class="res-head">
+    <div class="eyebrow">Ваш месяц</div>
+    <div class="sign gold" id="signLine"></div>
+    <div class="meta" id="metaLine"></div>
+  </div>
+  <div id="spheres"></div>
+
+  <div class="bridge">
+    <div class="eyebrow">А теперь главное</div>
+    <h2 class="bridge-title gold">Это ваш месяц по знаку. А что с вашим годом?</h2>
+    <p>Вы сейчас прочитали фон месяца. Он одинаковый для всех, кто родился с вами под одним знаком. Полезно, но это как прогноз погоды: понятно, брать ли зонтик, и совсем непонятно, что делать с вашей жизнью</p>
+    <p><b>А в жизни вопросы звучат так:</b></p>
+    <p class="qline">Увольняться весной или дотянуть до осени?<br>
+    Когда начнутся отношения, которых я жду?<br>
+    В каком месяце запускать своё дело?</p>
+    <p><b>Прогноз по знаку на такое не ответит.</b> Ответ лежит в вашей личной карте года, с датами</p>
+  </div>
+
+  <section id="year-theory" class="theory">
+    <div class="rule"><span>◆</span></div>
+    <div class="eyebrow">Где увидеть ответ</div>
+    <h2>Личный прогноз на <span class="next-year">год</span>: соляр и транзиты</h2>
+    <p>Большинство прогнозов на год сделаны только по соляру: что ждёт вас в деньгах, любви, работе, по сферам. Это картинка года. Но в ней нет главного: <b>когда</b></p>
+    <div class="compare">
+      <div class="cmp"><h3>Соляр</h3><p>Показывает, что вероятно в году: например, что год располагает к серьёзным отношениям или смене работы</p></div>
+      <div class="cmp mine"><h3>Соляр + транзиты</h3><p>Показывает, в какие месяцы это откроется, а в какие лучше держать ушки на макушке. Так я составляю прогноз</p></div>
+    </div>
+    <div class="quote">Пример из моей практики: в соляре видно, что в году есть вероятность серьёзных отношений. Транзиты подсказывают, в какие периоды двери открыты для судьбоносного знакомства, и в какие можно притянуть человека, который потом обманет. Я расписываю это по датам</div>
+    <p>И важное: прогноз не программирует вашу жизнь. Сценарист всё равно вы. Прогноз показывает, когда ветер попутный, а грести придётся самим</p>
+  </section>
+
+  <div class="offer lead">
+    <div class="variant">Личный прогноз · вариант 1</div>
+    <h2>Ваш <span class="next-year">год</span> по месяцам: деньги, работа, любовь, здоровье</h2>
+    <p>Вопросы, которые вы только что прочитали в своём расчёте, как раз те, на которые отвечает личный прогноз. Начинаю всегда с вашего запроса: чем точнее вы скажете, что волнует, тем точнее я помогу</p>
+    <ul class="inc">
+      <li><span class="ck">◆</span><span>Соляр на год: главные темы по всем сферам жизни</span></li>
+      <li><span class="ck">◆</span><span>Ключевые транзиты года с периодами: когда действовать, а когда переждать</span></li>
+      <li><span class="ck">◆</span><span>Ответы на ваши личные вопросы, с которыми вы приходите</span></li>
+      <li><span class="ck">◆</span><span>Объясняю простым языком, без астрологической духоты</span></li>
+      <li><span class="ck">◆</span><span>Нужны дата, точное время и место рождения</span></li>
+    </ul>
+    <div class="callout">Стоимость, формат и свободные места на прогноз напишу в личке</div>
+    <p class="cta-hint">Нажмите кнопку и напишите мне в личку слово <b class="word next-year">2027</b>, расскажу все условия</p>
+    <a class="cta solid" id="ctaYear" href="https://t.me/okssmi?text=2027" target="_blank" rel="noopener">Написать Оксане в Telegram</a>
+  </div>
+
+  <div class="offer">
+    <div class="variant alt">Деньги по карте · вариант 2</div>
+    <h2>Через что к вам приходят деньги</h2>
+    <p>Если вопрос не про «когда», а про «почему деньги приходят и утекают» и «куда мне вообще двигаться», смотрим натальную карту с точки зрения финансов. Это моя основная специализация</p>
+    <ul class="inc">
+      <li><span class="ck">◆</span><span>Через что к вам приходят большие деньги</span></li>
+      <li><span class="ck">◆</span><span>Какие профессии и форматы работы вам подходят</span></li>
+      <li><span class="ck">◆</span><span>Что ограничивает ваш доход</span></li>
+      <li><span class="ck">◆</span><span>Как вам проявляться и продавать свои знания</span></li>
+      <li><span class="ck">◆</span><span>Где ваш самый сильный денежный канал</span></li>
+    </ul>
+    <p class="cta-hint">Напишите мне в личку слово <b class="word">ДЕНЬГИ</b>, расскажу условия</p>
+    <a class="cta gold" href="https://t.me/okssmi?text=%D0%94%D0%95%D0%9D%D0%AC%D0%93%D0%98" target="_blank" rel="noopener">Написать Оксане в Telegram</a>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="rule"><span>◆</span></div>
+  Оксана Смирнова · финансовый астролог · <a href="https://t.me/okssmi2" target="_blank" rel="noopener">канал в Telegram</a><br>
+  Расчёт носит рекомендательный характер
+</div></footer>
+
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
