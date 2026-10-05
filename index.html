@@ -161,7 +161,7 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .sphere-money .ask,.sphere-work .ask{border-top:1px solid var(--line)}
 .sphere-money .ask-intro,.sphere-work .ask-intro{color:var(--champ)}
 .sphere-money .ask i,.sphere-work .ask i{color:var(--sand); border-left:2px solid var(--gold)}
-.sphere-money .ask-link,.sphere-work .ask-link{border:1px solid var(--gold); color:var(--champ)}
+.sphere-money .ask-link,.sphere-work .ask-link{background:var(--goldfill); color:#1A140C; border:0; box-shadow:0 10px 26px rgba(197,164,109,.3)}
 /* светлая сфера (любовь, силы) */
 .sphere-love{background:var(--rose); color:var(--dk)}
 .sphere-power{background:var(--cream); color:var(--dk)}
@@ -213,6 +213,29 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 
 /* ---------- услуги ---------- */
 .offers-band{padding:56px 0 64px; background:var(--bg)}
+.chooser{margin:0 0 34px}
+.chooser > p{text-align:center; color:var(--ink-2); margin:-14px 0 20px}
+.choose-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:520px){ .choose-grid{grid-template-columns:1fr} }
+.choose{display:block; text-decoration:none; border-radius:20px; padding:20px 18px 18px; position:relative}
+.choose.c1{background:linear-gradient(180deg,#2A231B,#17130F); border:1px solid var(--gold); color:var(--sand)}
+.choose.c2{background:var(--cream); color:var(--dk); border:1px solid rgba(122,35,56,.35)}
+.choose .n{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; font-family:"Cormorant Garamond",serif; font-size:54px; line-height:.9; font-weight:600}
+.choose.c1 .n{color:var(--champ)} .choose.c2 .n{color:var(--wine)}
+.choose .q{display:block; margin:8px 0 6px; font-size:12px; letter-spacing:.24em; text-transform:uppercase; font-weight:700}
+.choose.c1 .q{color:var(--champ)} .choose.c2 .q{color:var(--wine)}
+.choose .t{display:block; font-family:"Cormorant Garamond",serif; font-size:23px; line-height:1.15; font-weight:600; margin-bottom:8px}
+.choose .w{display:block; font-size:14px; line-height:1.5; opacity:.85}
+.choose .go{display:block; margin-top:12px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700}
+.offer .vhead{display:flex; align-items:center; gap:14px}
+.offer .vnum{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; font-family:"Cormorant Garamond",serif; font-size:64px; line-height:.85; font-weight:600}
+.offer.o1 .vnum{color:var(--champ)} .offer.o2 .vnum{color:var(--wine)}
+.offer .vlabel{font-size:13px; letter-spacing:.26em; text-transform:uppercase; font-weight:700}
+.offer.o1 .vlabel{color:var(--champ)} .offer.o2 .vlabel{color:var(--wine)}
+.offer .ifyou{margin:14px 0 0; padding:12px 14px; border-radius:12px; font-size:15.5px; font-weight:600; line-height:1.45}
+.offer.o1 .ifyou{background:rgba(217,194,154,.12); color:var(--sand)}
+.offer.o2 .ifyou{background:var(--paper); color:var(--dk)}
+
 .offers-band > .wrap > h2{text-align:center; color:var(--sand); margin:10px 0 30px}
 .offer{border-radius:24px; padding:30px 22px; margin-bottom:26px; position:relative; overflow:hidden}
 .offer h2{margin:16px 0 14px; font-size:clamp(30px,7vw,40px)}
@@ -386,13 +409,21 @@ footer a{color:var(--champ)}
   <section class="offers-band">
     <div class="wrap">
       <div class="eyebrow" style="text-align:center">Как я могу помочь</div>
-      <h2>Два формата работы со мной</h2>
+      <h2>Что вам сейчас важнее?</h2>
+      <div class="chooser">
+        <p>Два разных вопроса, два разных разбора. Выберите свой</p>
+        <div class="choose-grid">
+          <a class="choose c1" href="#offer1"><span class="n">1</span><span class="q">Когда</span><span class="t">Хочу знать, в какие месяцы действовать</span><span class="w">Увольняться или ждать, переезжать, запускать дело, начинать отношения</span><span class="go">Прогноз на 12 месяцев ↓</span></a>
+          <a class="choose c2" href="#offer2"><span class="n">2</span><span class="q">Почему и куда</span><span class="t">Хочу понять свои деньги</span><span class="w">Деньги приходят и утекают, не понимаю, через что мне зарабатывать</span><span class="go">Разбор денег по карте ↓</span></a>
+        </div>
+      </div>
 
-      <div class="offer o1">
+      <div class="offer o1" id="offer1">
         <svg class="deco" style="right:-20px;top:-20px;width:130px;height:130px;opacity:.7" viewBox="0 0 40 40" aria-hidden="true"><path class="tw" d="M20 4 L22 18 L36 20 L22 22 L20 36 L18 22 L4 20 L18 18 Z" fill="#C5A46D"/></svg>
-        <div class="pill goldp">Вариант 1 · Личный прогноз</div>
+        <div class="vhead"><span class="vnum">1</span><span class="vlabel">Вариант 1<br>Личный прогноз</span></div>
         <h2>Ваши 12 месяцев вперёд: деньги, работа, любовь, здоровье</h2>
-        <p>Вопросы, которые вы только что прочитали в своём расчёте, как раз те, на которые отвечает личный прогноз. Заказать можно в любой день: год я считаю вперёд от дня, когда вы обратились. Начинаю всегда с вашего запроса: чем точнее вы скажете, что волнует, тем точнее я помогу</p>
+        <p class="ifyou">Выбирайте, если ваш вопрос «когда»: в какие месяцы действовать, а в какие переждать</p>
+        <p>Заказать можно в любой день: год считаю вперёд от дня, когда вы обратились. Начинаю с вашего запроса</p>
         <ul class="inc">
           <li><span class="ck">◆</span><span>Соляр: главные темы вашего личного года по всем сферам</span></li>
           <li><span class="ck">◆</span><span>Ключевые транзиты на 12 месяцев вперёд с периодами: когда действовать, а когда переждать</span></li>
@@ -405,11 +436,12 @@ footer a{color:var(--champ)}
         <a class="cta solid" id="ctaYear" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Написать Оксане в Telegram</a>
       </div>
 
-      <div class="offer o2">
+      <div class="offer o2" id="offer2">
         <svg class="deco" style="right:-30px;top:-30px;width:150px;height:150px;opacity:.5" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="30" fill="none" stroke="#7A2338" stroke-width="1.2"/><text x="50" y="62" text-anchor="middle" font-size="34" fill="#7A2338" font-family="serif">♀&#xFE0E;</text></svg>
-        <div class="pill dark">Вариант 2 · Деньги по карте</div>
+        <div class="vhead"><span class="vnum">2</span><span class="vlabel">Вариант 2<br>Деньги по карте</span></div>
         <h2>Через что к вам приходят деньги</h2>
-        <p>Если вопрос не про «когда», а про «почему деньги приходят и утекают» и «куда мне вообще двигаться», смотрим натальную карту с точки зрения финансов. Это моя основная специализация</p>
+        <p class="ifyou">Выбирайте, если ваш вопрос «почему и куда»: почему деньги утекают и через что вам зарабатывать</p>
+        <p>Смотрю натальную карту с точки зрения финансов. Это моя основная специализация</p>
         <ul class="inc">
           <li><span class="ck">◆</span><span>Через что к вам приходят большие деньги</span></li>
           <li><span class="ck">◆</span><span>Какие профессии и форматы работы вам подходят</span></li>
