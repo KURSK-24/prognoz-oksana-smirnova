@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ваш месяц по дате рождения</title>
+<meta name="description" content="Личный расчёт месяца по дате рождения: транзиты к вашим планетам, деньги, любовь, работа, силы. Финансовый астролог Оксана Смирнова">
+<meta name="theme-color" content="#0E0C0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E0C0A; --bg-2:#15120F; --panel:#1A1612; --panel-2:#211C17;
+  --ink:#F3EDE3; --ink-2:rgba(243,237,227,.76); --ink-3:rgba(243,237,227,.5);
+  --line:rgba(217,194,154,.18); --line-2:rgba(217,194,154,.34);
+  --champ:#D9C29A; --gold:#C5A46D; --sand:#EFE4D0;
+  --cream:#F5EDE0; --cream-2:#EBDFCB; --paper:#FBF7F0;
+  --dk:#1E1813; --dk-2:#5A4B3C; --dk-3:#8A7763; --dkline:rgba(90,75,60,.2); --goldd:#94702F;
+  --rose:#F3E2DD; --wine:#7A2338; --wine-2:#4A1422;
+  --goldtext:linear-gradient(100deg,#F7E9C6 0%,#D2B176 38%,#F4E2B4 58%,#B48D52 100%);
+  --goldfill:linear-gradient(120deg,#E9D3A4 0%,#C9A766 45%,#E8D29E 70%,#B8935A 100%);
+  --r:20px; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; color:var(--ink); background:var(--bg);
+  font-family:Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:16px; line-height:1.7; overflow-x:hidden}
+.wrap{max-width:680px; margin:0 auto; padding:0 16px; position:relative; z-index:1}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; line-height:1.08; margin:0}
+h1{font-size:clamp(38px,9.4vw,60px)} h2{font-size:clamp(32px,7.6vw,46px)} h3{font-size:clamp(22px,5vw,27px)}
+.gold{background:var(--goldtext); -webkit-background-clip:text; background-clip:text; color:transparent}
+p{margin:0 0 14px; color:var(--ink-2)}
+.eyebrow{font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--champ); font-weight:600}
+.hidden{display:none}
+.deco{position:absolute; pointer-events:none; z-index:0}
+
+/* ---------- полосы ---------- */
+.band{position:relative; overflow:hidden; padding:56px 0}
+.band.light{background:var(--cream); color:var(--dk)}
+.band.light p{color:var(--dk-2)} .band.light b{color:var(--dk)}
+.band.light .eyebrow{color:var(--goldd)}
+.band.paper{background:var(--paper); color:var(--dk)}
+.band.paper p{color:var(--dk-2)} .band.paper b{color:var(--dk)}
+.band.paper .eyebrow{color:var(--goldd)}
+.band.night{background:radial-gradient(120% 80% at 80% 0%,#2A2140 0%,#14111E 45%,#0B0A10 100%)}
+.band.wine{background:radial-gradient(90% 70% at 100% 0%,rgba(197,164,109,.25),transparent 60%),linear-gradient(160deg,#5A1A2B 0%,#2E0D17 70%,#1C080E 100%)}
+.pill{display:inline-flex; align-items:center; gap:8px; border-radius:100px; padding:8px 16px; font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; font-weight:700}
+.pill.dark{background:var(--dk); color:var(--champ)}
+.pill.goldp{background:var(--goldfill); color:#1A140C}
+.pill.line{border:1px solid var(--line-2); color:var(--champ); background:rgba(14,12,10,.45); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px)}
+
+/* ---------- первый экран ---------- */
+.hero{position:relative; background:var(--bg); overflow:hidden}
+.hero-img{position:relative; height:clamp(560px,150vw,860px)}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 12%; display:block}
+.hero-img:before{content:""; position:absolute; inset:0 0 auto 0; height:150px; z-index:1; background:linear-gradient(180deg,rgba(14,12,10,.75),transparent)}
+.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:62%; background:linear-gradient(180deg,rgba(14,12,10,0) 0%,rgba(14,12,10,.55) 35%,rgba(14,12,10,.92) 70%,var(--bg) 100%)}
+.brand{position:absolute; z-index:2; top:0; left:0; right:0}
+.brand .wrap{display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:20px}
+.brand b{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:22px; color:var(--sand); white-space:nowrap}
+.brand span{font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--champ); font-weight:600; text-align:right}
+.hero-in{position:relative; z-index:2; margin-top:-150px; padding-bottom:40px}
+.hero .pill{margin-bottom:18px}
+.hero h1{margin-bottom:16px; color:var(--sand)} .hero h1 em{font-style:italic}
+.hero .lede{font-size:16px; color:var(--ink-2); margin-bottom:24px} .hero .lede b{color:var(--sand); font-weight:600}
+.qlist{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.qlist li{display:flex; gap:14px; align-items:baseline; padding:13px 2px; border-bottom:1px solid var(--line); font-size:15px}
+.qlist .gl{color:var(--gold); font-size:10px; flex:none}
+
+/* ---------- форма ---------- */
+.form-band{padding:48px 0 56px}
+.form-band h2{color:var(--dk); margin:12px 0 10px}
+.form-card{background:var(--dk); border-radius:var(--r); padding:26px 20px; box-shadow:0 30px 60px rgba(60,40,20,.28); margin-top:22px; color:var(--ink)}
+label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--champ); margin-bottom:12px}
+.date-fields{display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:9px}
+.date-fields select{width:100%; padding:14px 10px; font:inherit; font-size:16px; color:var(--ink);
+  background:var(--bg-2); border:1px solid var(--line); border-radius:12px; min-height:54px; appearance:none; -webkit-appearance:none; text-align:center; cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 24px, calc(100% - 10px) 24px; background-size:5px 5px,5px 5px; background-repeat:no-repeat; padding-right:26px}
+.date-fields select option{background:#1A1612; color:#F3EDE3}
+.date-fields select:focus{outline:1px solid var(--champ); border-color:transparent}
+.btn{width:100%; margin-top:16px; padding:17px 20px; font:inherit; font-size:12.5px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+  color:#1A140C; background:var(--goldfill); border:0; border-radius:12px; cursor:pointer; min-height:58px; box-shadow:0 14px 34px rgba(197,164,109,.3), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn:active{transform:translateY(1px)}
+.form-card .note{font-size:12.5px; color:var(--ink-3); margin:14px 0 0; line-height:1.55}
+.err{color:#E3A3A3; font-size:13.5px; margin-top:10px; display:none} .err.on{display:block}
+.how{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:22px}
+.how div{background:var(--paper); border:1px solid var(--dkline); border-radius:14px; padding:14px 12px; font-size:12.5px; line-height:1.45; color:var(--dk-2)}
+.how b{display:block; font-family:"Cormorant Garamond",serif; font-size:26px; line-height:1; color:var(--goldd); margin-bottom:6px}
+@media (max-width:460px){ .how{grid-template-columns:1fr} }
+
+/* ---------- результат: шапка и натал ---------- */
+.res-head{text-align:center}
+.res-head .sign{font-family:"Cormorant Garamond",serif; font-size:clamp(46px,11vw,66px); font-weight:600; line-height:1.05; margin:10px 0 4px; color:var(--dk)}
+.res-head .dateline{font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--goldd); font-weight:600}
+.res-head .meta{margin:16px auto 0; max-width:520px; font-size:15px}
+.natal{list-style:none; padding:0; margin:28px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:10px}
+@media (max-width:460px){ .natal{grid-template-columns:1fr} }
+.natal li{background:var(--paper); border:1px solid var(--dkline); border-radius:16px; padding:14px 14px 14px 62px; position:relative; min-height:76px}
+.natal .pg{position:absolute; left:12px; top:14px; width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--dk); color:var(--champ); font-size:19px; line-height:1}
+.natal .pn{display:block; font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--dk)}
+.natal .pd{display:block; font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:600; color:var(--goldd); line-height:1.25}
+.natal .pr{display:block; font-size:12.5px; color:var(--dk-3); line-height:1.4; margin-top:2px}
+
+/* ---------- небо месяца ---------- */
+.sky-band h2{margin:10px 0 12px; color:var(--sand)}
+.skylist{list-style:none; padding:0; margin:20px 0 0}
+.skylist li{display:flex; gap:16px; padding:14px 0; border-top:1px solid rgba(255,255,255,.12); font-size:15px; color:var(--ink)}
+.skylist li:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.skylist .d, .dates .d{flex:none; width:70px; font-family:"Cormorant Garamond",serif; font-weight:600; font-size:20px; line-height:1.25}
+.skylist .d{color:#E8D29E}
+
+/* ---------- сферы ---------- */
+.spheres-band{padding:56px 0 24px; background:var(--bg)}
+.spheres-band > .wrap > h2{text-align:center; margin:10px 0 8px; color:var(--sand)}
+.spheres-band > .wrap > p{text-align:center; margin-bottom:30px}
+.sphere{border-radius:24px; padding:26px 20px; margin-bottom:22px; position:relative; overflow:hidden}
+.sphere-top{display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap}
+.sphere-ic{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:18px;flex:none}
+.sphere h3{flex:1; min-width:130px; font-family:"Cormorant Garamond",serif; font-size:30px; font-weight:600}
+.tag{font-size:9.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; padding:7px 12px; border-radius:100px}
+.natline{font-size:14px; padding:12px 14px; border-radius:12px; margin-bottom:16px}
+.natline span{display:block; font-size:10px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; margin-bottom:3px}
+.keyev{font-size:15.5px}
+.dates{list-style:none; padding:0; margin:18px 0}
+.dates li{display:flex; gap:14px; padding:13px 0; font-size:14.5px; line-height:1.5}
+.dates .t{flex:1}
+.astro{display:block; margin-top:4px; font-size:12px; line-height:1.4; opacity:.62; font-weight:400}
+.keyev .astro{margin-top:6px}
+.dates li.hard .d:before, .dates li.soft .d:before{content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:7px; vertical-align:middle}
+.todo{border-radius:16px; padding:18px; font-size:15px; margin-top:6px}
+.todo b{display:block; font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:600; margin-bottom:6px}
+.todo p{margin:0}
+.todo .when{margin-top:12px; padding-top:12px; font-size:14.5px; font-weight:600}
+.todo .when span{display:inline-block; font-weight:700; text-transform:uppercase; font-size:10px; letter-spacing:.26em; margin-right:10px}
+.ask{margin-top:22px; padding-top:20px}
+.ask-intro{font-size:14.5px; margin:0 0 10px}
+.ask i{font-family:"Cormorant Garamond",serif; font-size:24px; font-style:italic; display:block; padding-left:16px; line-height:1.32}
+.ask-link{display:flex; align-items:center; justify-content:center; gap:10px; margin-top:18px; padding:15px 18px; border-radius:12px; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none}
+
+.nuance{margin:20px 0 0; padding:16px 16px 16px 18px; border-radius:14px; font-size:14.5px; line-height:1.6}
+.nuance span{display:block; font-size:10px; letter-spacing:.26em; text-transform:uppercase; font-weight:700; margin-bottom:6px}
+.sphere-money .nuance,.sphere-work .nuance{background:rgba(122,35,56,.28); border-left:3px solid #C2435F; color:var(--ink-2)}
+.sphere-money .nuance span,.sphere-work .nuance span{color:#F2B8C4} .sphere-money .nuance b,.sphere-work .nuance b{color:#fff}
+.sphere-love .nuance,.sphere-power .nuance{background:#fff; border-left:3px solid var(--goldd); color:var(--dk-2)}
+.sphere-love .nuance span,.sphere-power .nuance span{color:var(--goldd)}
+/* тёмная сфера (деньги, работа) */
+.sphere-money,.sphere-work{background:linear-gradient(180deg,#241E18,#17130F); border:1px solid var(--line-2)}
+.sphere-money h3,.sphere-work h3{color:var(--sand)}
+.sphere-money .sphere-ic,.sphere-work .sphere-ic{background:var(--goldfill); color:#1A140C}
+.sphere-money .natline,.sphere-work .natline{background:rgba(217,194,154,.08); color:var(--sand)}
+.sphere-money .natline span,.sphere-work .natline span{color:var(--champ)}
+.sphere-money .keyev b,.sphere-work .keyev b,.sphere-money p b,.sphere-work p b{color:var(--sand)}
+.sphere-money .dates li,.sphere-work .dates li{border-top:1px solid var(--line); color:var(--ink-2)}
+.sphere-money .dates b,.sphere-work .dates b{color:var(--ink)}
+.sphere-money .dates .d,.sphere-work .dates .d{color:var(--champ)}
+.sphere-money .todo,.sphere-work .todo{background:var(--goldfill); color:#2A2015}
+.sphere-money .todo b,.sphere-work .todo b{color:#1A140C} .sphere-money .todo p,.sphere-work .todo p{color:#2A2015}
+.sphere-money .todo .when,.sphere-work .todo .when{border-top:1px solid rgba(26,20,12,.25)}
+.sphere-money .ask,.sphere-work .ask{border-top:1px solid var(--line)}
+.sphere-money .ask-intro,.sphere-work .ask-intro{color:var(--champ)}
+.sphere-money .ask i,.sphere-work .ask i{color:var(--sand); border-left:2px solid var(--gold)}
+.sphere-money .ask-link,.sphere-work .ask-link{background:var(--goldfill); color:#1A140C; border:0; box-shadow:0 10px 26px rgba(197,164,109,.3)}
+/* светлая сфера (любовь, силы) */
+.sphere-love{background:var(--rose); color:var(--dk)}
+.sphere-power{background:var(--cream); color:var(--dk)}
+.sphere-love p,.sphere-power p{color:var(--dk-2)}
+.sphere-love h3,.sphere-power h3,.sphere-love b,.sphere-power b{color:var(--dk)}
+.sphere-love .sphere-ic{background:var(--wine); color:#F7E3E7}
+.sphere-power .sphere-ic{background:var(--dk); color:var(--champ)}
+.sphere-love .natline,.sphere-power .natline{background:rgba(255,255,255,.6); color:var(--dk)}
+.sphere-love .natline span{color:var(--wine)} .sphere-power .natline span{color:var(--goldd)}
+.sphere-love .dates li,.sphere-power .dates li{border-top:1px solid var(--dkline); color:var(--dk-2)}
+.sphere-love .dates .d{color:var(--wine)} .sphere-power .dates .d{color:var(--goldd)}
+.sphere-love .todo{background:var(--wine); color:#F7E3E7} .sphere-love .todo b{color:#fff} .sphere-love .todo p{color:#F7E3E7}
+.sphere-power .todo{background:var(--dk)} .sphere-power .todo b{color:var(--sand)} .sphere-power .todo p{color:var(--ink-2)}
+.sphere-love .todo .when,.sphere-power .todo .when{border-top:1px solid rgba(255,255,255,.2)}
+.sphere-love .todo .when span,.sphere-power .todo .when span{color:#E8D29E}
+.sphere-love .ask,.sphere-power .ask{border-top:1px solid var(--dkline)}
+.sphere-love .ask-intro{color:var(--wine)} .sphere-power .ask-intro{color:var(--goldd)}
+.sphere-love .ask i,.sphere-power .ask i{color:var(--dk); border-left:2px solid var(--goldd)}
+.sphere-love .ask-link{background:var(--wine); color:#fff} .sphere-power .ask-link{background:var(--dk); color:var(--champ)}
+/* метки */
+.tag.hard{background:rgba(122,35,56,.9); color:#F7DDE3}
+.tag.easy{background:var(--goldfill); color:#1A140C}
+.tag.calm{background:rgba(120,120,120,.18); color:inherit; border:1px solid currentColor}
+.dates li.hard .d:before{background:#C2435F} .dates li.soft .d:before{background:#C9A766}
+.sphere-love .tag.easy,.sphere-power .tag.easy{background:var(--dk); color:var(--champ)}
+
+/* ---------- мост ---------- */
+.bridge h2{color:#fff; margin:10px 0 18px}
+.bridge p{color:rgba(255,240,240,.82)} .bridge b{color:#fff}
+.qline{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:24px; line-height:1.5; color:#F4E2B4; padding-left:16px; border-left:2px solid var(--gold); margin:18px 0}
+
+/* ---------- где увидеть ответ ---------- */
+.answer-band{padding:64px 0}
+.answer-band .pill{margin-bottom:18px}
+.answer-band h2{color:var(--dk); font-size:clamp(36px,8.6vw,54px); margin-bottom:16px}
+.answer-band h2 em{font-style:italic; color:var(--goldd)}
+.why-h{margin:26px 0 12px}
+.why li span b{font-weight:600}
+.compare{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:24px 0}
+@media (max-width:520px){ .compare{grid-template-columns:1fr} }
+.cmp{border-radius:18px; padding:20px}
+.cmp.base{background:var(--paper); border:1px solid var(--dkline)}
+.cmp.mine{background:var(--dk); color:var(--ink); box-shadow:0 20px 40px rgba(60,40,20,.25)}
+.cmp h3{font-size:27px; margin-bottom:8px}
+.cmp.base h3{color:var(--dk)} .cmp.mine h3{background:var(--goldtext); -webkit-background-clip:text; background-clip:text; color:transparent}
+.cmp p{font-size:14.5px; margin:0} .cmp.mine p{color:var(--ink-2)}
+.quote{background:var(--paper); border-radius:18px; padding:22px 20px; margin:22px 0; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:22px; line-height:1.45; color:var(--dk); position:relative}
+.quote:before{content:"“"; position:absolute; top:-10px; left:16px; font-size:70px; line-height:1; color:var(--goldd)}
+
+/* ---------- услуги ---------- */
+.offers-band{padding:56px 0 64px; background:var(--bg)}
+.early{padding:6px 0 34px}
+.early .offer{margin:0}
+.early .offer h2{font-size:clamp(28px,6.6vw,36px)}
+.price-line{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin:16px 0 4px}
+.price-line .pr{font-family:"Cormorant Garamond",serif; font-size:46px; font-weight:600; color:var(--champ); line-height:1}
+.price-line .pn{font-size:13px; color:var(--ink-2)}
+.steps{list-style:none; counter-reset:st; margin:16px 0 18px; padding:0; display:grid; gap:10px}
+.steps li{counter-increment:st; display:flex; gap:12px; align-items:flex-start; font-size:15px; line-height:1.45; background:rgba(217,194,154,.08); border-radius:12px; padding:12px 14px; color:var(--ink)}
+.steps li:before{content:counter(st); flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center; background:var(--goldfill); color:#1A140C; font-weight:700; font-size:13px}
+.inline-offer{margin:4px 0 26px; padding:20px 18px; border-radius:20px; background:linear-gradient(180deg,#2A231B,#17130F); border:1px solid var(--gold); color:var(--sand)}
+.inline-offer b{display:block; font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:600; line-height:1.15; margin-bottom:8px; color:var(--sand)}
+.inline-offer p{color:var(--ink-2); font-size:14.5px; margin:0 0 14px}
+.sticky-buy{position:fixed; left:0; right:0; bottom:0; z-index:50; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); background:rgba(14,12,10,.92); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-top:1px solid var(--line-2); transform:translateY(110%); transition:transform .25s ease}
+.sticky-buy.on{transform:none}
+.sticky-buy a{display:flex; align-items:center; justify-content:center; gap:10px; max-width:680px; margin:0 auto; min-height:52px; border-radius:12px; text-decoration:none; background:var(--goldfill); color:#1A140C; font-weight:700; font-size:12px; letter-spacing:.16em; text-transform:uppercase}
+body.has-sticky footer{padding-bottom:96px}
+
+.chooser{margin:0 0 34px}
+.chooser > p{text-align:center; color:var(--ink-2); margin:-14px 0 20px}
+.choose-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:520px){ .choose-grid{grid-template-columns:1fr} }
+.choose{display:block; text-decoration:none; border-radius:20px; padding:20px 18px 18px; position:relative}
+.choose.c1{background:linear-gradient(180deg,#2A231B,#17130F); border:1px solid var(--gold); color:var(--sand)}
+.choose.c2{background:var(--cream); color:var(--dk); border:1px solid rgba(122,35,56,.35)}
+.choose .n{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; font-family:"Cormorant Garamond",serif; font-size:54px; line-height:.9; font-weight:600}
+.choose.c1 .n{color:var(--champ)} .choose.c2 .n{color:var(--wine)}
+.choose .q{display:block; margin:8px 0 6px; font-size:12px; letter-spacing:.24em; text-transform:uppercase; font-weight:700}
+.choose.c1 .q{color:var(--champ)} .choose.c2 .q{color:var(--wine)}
+.choose .t{display:block; font-family:"Cormorant Garamond",serif; font-size:23px; line-height:1.15; font-weight:600; margin-bottom:8px}
+.choose .w{display:block; font-size:14px; line-height:1.5; opacity:.85}
+.choose .go{display:block; margin-top:12px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:700}
+.offer .vhead{display:flex; align-items:center; gap:14px}
+.offer .vnum{font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; font-family:"Cormorant Garamond",serif; font-size:64px; line-height:.85; font-weight:600}
+.offer.o1 .vnum{color:var(--champ)} .offer.o2 .vnum{color:var(--wine)}
+.offer .vlabel{font-size:13px; letter-spacing:.26em; text-transform:uppercase; font-weight:700}
+.offer.o1 .vlabel{color:var(--champ)} .offer.o2 .vlabel{color:var(--wine)}
+.offer .ifyou{margin:14px 0 0; padding:12px 14px; border-radius:12px; font-size:15.5px; font-weight:600; line-height:1.45}
+.offer.o1 .ifyou{background:rgba(217,194,154,.12); color:var(--sand)}
+.offer.o2 .ifyou{background:var(--paper); color:var(--dk)}
+
+.offers-band > .wrap > h2{text-align:center; color:var(--sand); margin:10px 0 30px}
+.offer{border-radius:24px; padding:30px 22px; margin-bottom:26px; position:relative; overflow:hidden}
+.offer h2{margin:16px 0 14px; font-size:clamp(30px,7vw,40px)}
+.offer.o1{background:radial-gradient(90% 60% at 100% 0%,rgba(197,164,109,.25),transparent 60%),linear-gradient(180deg,#241E18,#14110D); border:1px solid var(--gold)}
+.offer.o1 h2{color:var(--sand)}
+.offer.o2{background:var(--cream); color:var(--dk)}
+.offer.o2 h2{color:var(--dk)} .offer.o2 p{color:var(--dk-2)}
+.inc{list-style:none; margin:20px 0; padding:0; display:grid; gap:10px}
+.inc li{display:flex; gap:12px; font-size:15px; align-items:baseline; padding:12px 14px; border-radius:12px}
+.offer.o1 .inc li{background:rgba(217,194,154,.08); color:var(--ink)}
+.offer.o2 .inc li{background:var(--paper); color:var(--dk)}
+.inc .ck{flex:none; font-size:12px}
+.offer.o1 .ck{color:var(--gold)} .offer.o2 .ck{color:var(--wine)}
+.callout{border:1px dashed var(--line-2); border-radius:12px; padding:14px 16px; margin:18px 0; font-size:14.5px; color:var(--champ)}
+.cta-hint{margin:0 0 14px; text-align:center; font-size:14.5px; line-height:1.55}
+.offer.o1 .cta-hint{color:var(--ink-2)}
+.word{font-weight:700; letter-spacing:.14em}
+.offer.o1 .word{color:var(--champ)} .offer.o2 .word{color:var(--wine)}
+.cta{display:block; text-align:center; text-decoration:none; padding:17px 20px; border-radius:12px; font-weight:700; font-size:12px; letter-spacing:.22em; text-transform:uppercase; min-height:58px; line-height:1.9}
+.cta.solid{background:var(--goldfill); color:#1A140C; box-shadow:0 14px 34px rgba(197,164,109,.25)}
+.cta.winec{background:var(--wine); color:#fff; box-shadow:0 14px 30px rgba(122,35,56,.3)}
+footer{border-top:1px solid var(--line); padding:28px 0 44px; color:var(--ink-3); font-size:12.5px; text-align:center}
+footer a{color:var(--champ)}
+
+/* ---------- рисунки ---------- */
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.tw{animation:tw 3.2s ease-in-out infinite} .tw.b{animation-delay:1.1s} .tw.c{animation-delay:2.1s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wheel{animation:spin 160s linear infinite; transform-origin:50% 50%}
+@media (prefers-reduced-motion:reduce){ .tw,.wheel{animation:none} }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-img"><img src="hero.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
+  <div class="brand"><div class="wrap"><b>Оксана Смирнова</b><span>финансовый астролог</span></div></div>
+  <div class="wrap hero-in">
+    <div class="pill line">◆ Расчёт по реальным планетам</div>
+    <h1>Ваш прогноз по дате рождения <em class="gold">на текущий месяц</em></h1>
+    <p class="lede"><b>Деньги, любовь, работа и силы.</b> Я всю жизнь работаю с деньгами и цифрами и знаю: деньги волнуют всех, даже когда их достаточно. Поэтому здесь всё по полочкам: ваш месяц по четырём сферам и конкретные дни</p>
+    <ul class="qlist">
+      <li><span class="gl">◆</span><span>Деньги в этом месяце придут или утекут</span></li>
+      <li><span class="gl">◆</span><span>В любви время сближаться или переждать</span></li>
+      <li><span class="gl">◆</span><span>В работе двигаться или притормозить</span></li>
+      <li><span class="gl">◆</span><span>Где брать силы, когда батарейка на нуле</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band light form-band">
+  <svg class="deco" style="right:-120px;top:-110px;width:340px;height:340px;opacity:.5" viewBox="0 0 200 200" aria-hidden="true">
+    <g class="wheel" fill="none" stroke="#B9965A" stroke-width=".6">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="40"/>
+      <g id="spokes"><line x1="100" y1="4" x2="100" y2="22"/><line x1="148" y1="16.9" x2="139" y2="32.5"/><line x1="183.1" y1="52" x2="167.5" y2="61"/><line x1="196" y1="100" x2="178" y2="100"/><line x1="183.1" y1="148" x2="167.5" y2="139"/><line x1="148" y1="183.1" x2="139" y2="167.5"/><line x1="100" y1="196" x2="100" y2="178"/><line x1="52" y1="183.1" x2="61" y2="167.5"/><line x1="16.9" y1="148" x2="32.5" y2="139"/><line x1="4" y1="100" x2="22" y2="100"/><line x1="16.9" y1="52" x2="32.5" y2="61"/><line x1="52" y1="16.9" x2="61" y2="32.5"/></g>
+      <g fill="#94702F" stroke="none" font-size="11" text-anchor="middle" font-family="serif">
+        <text x="124" y="23">♈&#xFE0E;</text><text x="159" y="47">♉&#xFE0E;</text><text x="178" y="82">♊&#xFE0E;</text><text x="178" y="124">♋&#xFE0E;</text><text x="159" y="159">♌&#xFE0E;</text><text x="124" y="182">♍&#xFE0E;</text><text x="77" y="182">♎&#xFE0E;</text><text x="42" y="159">♏&#xFE0E;</text><text x="23" y="124">♐&#xFE0E;</text><text x="23" y="82">♑&#xFE0E;</text><text x="42" y="47">♒&#xFE0E;</text><text x="77" y="23">♓&#xFE0E;</text>
+      </g>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Личный расчёт</div>
+    <h2>Введите дату рождения</h2>
+    <p>Я посчитаю, где стояли планеты в ваш день рождения, и найду, когда в <span class="cur-month" data-case="prep">октябре 2026</span> планеты неба встают к ним в точные аспекты. Поэтому у двух людей одного знака даты получаются разные</p>
+    <div class="form-card">
+      <form id="form" novalidate>
+        <label for="bdDay">Ваша дата рождения</label>
+        <div class="date-fields">
+          <select id="bdDay" aria-label="День" required></select>
+          <select id="bdMonth" aria-label="Месяц" required></select>
+          <select id="bdYear" aria-label="Год" required></select>
+        </div>
+        <button class="btn" type="submit">Посмотреть мой месяц</button>
+        <div class="err" id="err">Проверьте дату, кажется, такой не существует</div>
+      </form>
+      <p class="note">Время рождения не нужно. Расчёт идёт прямо в вашем телефоне: дата никуда не отправляется и нигде не сохраняется</p>
+    </div>
+    <div class="how">
+      <div><b>6</b>ваших планет на день рождения, с точным градусом</div>
+      <div><b>9</b>планет неба месяца, положения по эфемеридам NASA</div>
+      <div><b>4</b>сферы жизни, у каждой свои дни по московскому времени</div>
+    </div>
+  </div>
+</section>
+
+<div id="result" class="hidden">
+
+  <section class="band paper">
+    <svg class="deco" style="left:-40px;top:20px;width:150px;height:150px;opacity:.55" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="18" fill="#E2CDA3"/><ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="#B9965A" stroke-width="2" transform="rotate(-20 50 50)"/>
+    </svg>
+    <svg class="deco" style="right:16px;top:30px;width:90px;height:90px" viewBox="0 0 40 40" aria-hidden="true">
+      <path class="tw" d="M20 4 L22 18 L36 20 L22 22 L20 36 L18 22 L4 20 L18 18 Z" fill="#C5A46D"/>
+    </svg>
+    <div class="wrap">
+      <div class="res-head">
+        <div class="eyebrow">Ваша карта на день рождения</div>
+        <div class="sign" id="signLine"></div>
+        <div class="dateline" id="dateLine"></div>
+        <p class="meta">Это ваши личные точки. Всё, что ниже, посчитано относительно них: какая планета неба, в какой день и под каким углом их задевает</p>
+      </div>
+      <ul class="natal" id="natal"></ul>
+    </div>
+  </section>
+
+  <section class="early">
+    <div class="wrap">
+      <div class="offer o1">
+        <div class="pill goldp">Личный прогноз на год</div>
+        <h2>Это ваш месяц. Ваши 12 месяцев вперёд я посчитаю по полной карте</h2>
+        <p>Здесь расчёт только по дате рождения. В личном прогнозе я беру дату, время и место рождения и расписываю все сферы: деньги, работу, любовь, здоровье. По месяцам: когда действовать, а когда переждать. Заказать можно в любой день, год считаю от дня обращения</p>
+        <div class="price-line"><span class="pr">15 000 ₽</span><span class="pn">за прогноз на 12 месяцев</span></div>
+        <ol class="steps">
+          <li>Нажмите кнопку: откроется моя личка в Telegram, слово ГОД уже будет вписано</li>
+          <li>Я пришлю короткую анкету: дата, время и место рождения и ваш главный вопрос на год</li>
+          <li>Пришлю реквизиты для оплаты и срок готовности. После оплаты считаю ваш год</li>
+        </ol>
+        <a class="cta solid js-buy" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Хочу прогноз на год</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band night sky-band">
+    <svg class="deco" style="inset:0;width:100%;height:100%" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="#FFF8E8"><circle class="tw" cx="30" cy="40" r="1.4"/><circle class="tw b" cx="110" cy="20" r="1"/><circle class="tw c" cx="190" cy="60" r="1.2"/><circle class="tw" cx="260" cy="24" r="1"/><circle class="tw b" cx="80" cy="140" r="1"/><circle class="tw c" cx="360" cy="180" r="1.3"/><circle class="tw" cx="300" cy="260" r="1"/><circle class="tw b" cx="40" cy="250" r="1.2"/><circle class="tw c" cx="220" cy="280" r="1"/></g>
+      <circle cx="340" cy="64" r="34" fill="#F4E2B4"/><circle cx="354" cy="56" r="31" fill="#1A1626"/>
+    </svg>
+    <div class="wrap">
+      <div class="eyebrow">Общий фон</div>
+      <h2>Небо месяца: <span class="cur-month">октябрь 2026</span></h2>
+      <p>Эти события одинаковые для всех. Важнее, какие из ваших точек они задевают, это разобрано по сферам ниже</p>
+      <ul class="skylist" id="skyList"></ul>
+    </div>
+  </section>
+
+  <section class="spheres-band">
+    <div class="wrap">
+      <div class="eyebrow" style="text-align:center">Ваши личные даты</div>
+      <h2>Месяц по четырём сферам</h2>
+      <p>Золотая точка у даты значит поддержку, красная напряжение</p>
+      <div id="spheres"></div>
+    </div>
+  </section>
+
+  <section class="band wine bridge">
+    <svg class="deco" style="right:-30px;top:-20px;width:200px;height:200px;opacity:.9" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="22" fill="#E8C98E"/><ellipse cx="50" cy="50" rx="44" ry="11" fill="none" stroke="#F4E2B4" stroke-width="1.6" transform="rotate(-18 50 50)"/>
+    </svg>
+    <div class="wrap">
+      <div class="eyebrow">А теперь главное</div>
+      <h2>Это ваш месяц. А что с вашим годом?</h2>
+      <p>Вы увидели, какие дни этого месяца задевают ваши планеты. Это расчёт только по дате рождения, то есть половина картины: без времени и места рождения не видно, в какой сфере вашей жизни сработает каждый период. И месяц это ещё не год</p>
+      <p><b>А в жизни вопросы звучат так:</b></p>
+      <p class="qline">Увольняться весной или дотянуть до осени?<br>Когда начнутся отношения, которых я жду?<br>В каком месяце запускать своё дело?</p>
+      <p><b>Ответ на такие вопросы лежит в вашей личной карте года, с датами</b></p>
+    </div>
+  </section>
+
+  <section id="year-theory" class="band light answer-band">
+    <svg class="deco" style="right:-60px;bottom:-60px;width:260px;height:260px;opacity:.45" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="#B9965A" stroke-width=".8"><circle cx="100" cy="100" r="30"/><circle cx="100" cy="100" r="55" stroke-dasharray="2 4"/><circle cx="100" cy="100" r="85" stroke-dasharray="2 4"/></g>
+      <circle cx="100" cy="100" r="12" fill="#D9B76F"/><circle cx="155" cy="100" r="6" fill="#7A2338"/><circle cx="40" cy="160" r="8" fill="#1E1813"/>
+    </svg>
+    <div class="wrap">
+      <div class="pill dark">✦ Как я считаю год</div>
+      <h2>Прогноз на 12 месяцев вперёд, <em>с датами</em></h2>
+      <p>Обычно прогноз на год покупают в одном из двух вариантов. И после обоих остаётся вопрос: <b>а что мне с этим делать и когда?</b></p>
+      <div class="compare">
+        <div class="cmp base"><h3>Гороскоп по знаку</h3><p>Один текст на миллионы людей вашего знака. Про вас лично в нём ничего</p></div>
+        <div class="cmp base"><h3>Соляр по сферам</h3><p>Показывает, что вероятно в году. Но не говорит когда: в марте или в ноябре</p></div>
+        <div class="cmp mine"><h3>Мой прогноз</h3><p>Соляр и все ключевые транзиты года по вашей карте. Что произойдёт и в какие месяцы: когда действовать, а когда держать ушки на макушке</p></div>
+      </div>
+      <h3 class="why-h">Почему я считаю именно так</h3>
+      <ul class="inc why">
+        <li><span class="ck">◆</span><span><b>Решения принимаются в конкретные даты.</b> Уволиться, переехать, запустить дело, начать отношения: важно не только «будет ли», но и «когда»</span></li>
+        <li><span class="ck">◆</span><span><b>Считаю по вашей карте, а не по знаку.</b> Дата, время и место рождения показывают, в какой сфере жизни сработает каждый период</span></li>
+        <li><span class="ck">◆</span><span><b>Начинаю с вашего запроса.</b> В первую очередь смотрю то, что волнует вас сейчас</span></li>
+        <li><span class="ck">◆</span><span><b>Говорю человеческим языком и даю, что делать.</b> Не «Сатурн в квадрате», а «в эти недели не берите кредит»</span></li>
+      </ul>
+      <div class="quote">Пример из моей практики: в соляре видно, что в году есть вероятность серьёзных отношений. Транзиты подсказывают, в какие периоды двери открыты для судьбоносного знакомства, и в какие можно притянуть человека, который потом обманет. Я расписываю это по датам</div>
+      <h3 class="why-h">Не ждите дня рождения или Нового года</h3>
+      <p>Многие откладывают: «закажу на день рождения» или «к Новому году». Но ваш год не начинается 1 января, а решения не ждут дня рождения: работа, деньги и отношения уже на столе. Планеты движутся каждый день, поэтому прогноз можно сделать в любой день и смотреть год вперёд от этого дня</p>
+      <p>Я смотрю ваш текущий личный год по соляру и расписываю транзиты на <b>12 месяцев от дня, когда вы обратились</b>. Так прогноз отвечает на вопросы, которые стоят перед вами сейчас, а не через полгода</p>
+      <p>И важное: прогноз не программирует вашу жизнь. Сценарист всё равно вы. Прогноз показывает, когда ветер попутный, а грести придётся самим</p>
+    </div>
+  </section>
+
+  <section class="offers-band">
+    <div class="wrap">
+      <div class="eyebrow" style="text-align:center">Личный прогноз</div>
+      <h2>Ваш год по месяцам, с датами</h2>
+
+      <div class="offer o1" id="offer1">
+        <svg class="deco" style="right:-20px;top:-20px;width:130px;height:130px;opacity:.7" viewBox="0 0 40 40" aria-hidden="true"><path class="tw" d="M20 4 L22 18 L36 20 L22 22 L20 36 L18 22 L4 20 L18 18 Z" fill="#C5A46D"/></svg>
+        <h2>Ваши 12 месяцев вперёд: деньги, работа, любовь, здоровье</h2>
+        <p>Заказать можно в любой день: год считаю вперёд от дня, когда вы обратились. Начинаю с вашего запроса</p>
+        <ul class="inc">
+          <li><span class="ck">◆</span><span>Соляр: главные темы вашего личного года по всем сферам</span></li>
+          <li><span class="ck">◆</span><span>Ключевые транзиты на 12 месяцев вперёд с периодами: когда действовать, а когда переждать</span></li>
+          <li><span class="ck">◆</span><span>Ответы на ваши личные вопросы, с которыми вы приходите</span></li>
+          <li><span class="ck">◆</span><span>Объясняю простым языком, без астрологической духоты</span></li>
+          <li><span class="ck">◆</span><span>Нужны дата, точное время и место рождения</span></li>
+        </ul>
+        <div class="price-line"><span class="pr">15 000 ₽</span><span class="pn">за прогноз на 12 месяцев</span></div>
+        <ol class="steps">
+          <li>Нажмите кнопку: откроется моя личка в Telegram, слово ГОД уже будет вписано</li>
+          <li>Я пришлю короткую анкету: дата, время и место рождения и ваш главный вопрос на год</li>
+          <li>Пришлю реквизиты для оплаты и срок готовности. После оплаты считаю ваш год</li>
+        </ol>
+        <a class="cta solid js-buy" id="ctaYear" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Хочу прогноз на год</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sticky-buy" id="stickyBuy"><a class="js-buy" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Прогноз на год · 15 000 ₽</a></div>
+
+<footer><div class="wrap">
+  Оксана Смирнова · финансовый астролог · <a href="https://t.me/okssmi2" target="_blank" rel="noopener">канал в Telegram</a><br>
+  Положения планет считаются по астрономическим формулам (Astronomy Engine), сверено с NASA JPL. Расчёт носит рекомендательный характер
+</div></footer>
+<!-- Яндекс Метрика: вписать номер счётчика вместо 0 и вставить код счётчика сюда -->
+<script>window.YM_ID = 0;</script>
+<script src="engine.js"></script>
+<script src="astronomy.browser.min.js"></script>
+<script src="sky-live.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
