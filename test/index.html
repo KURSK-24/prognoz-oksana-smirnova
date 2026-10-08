@@ -49,9 +49,9 @@ b{color:var(--ink)}
 /* ---------- первый экран: фото 1 ---------- */
 .hero{position:relative; background:var(--cream); overflow:hidden}
 .hero-img{--pt:clamp(178px,47vw,210px); position:relative; padding-top:var(--pt); max-width:760px; margin:0 auto; background:#130C08}
-.hero-img img{width:100%; height:clamp(540px,150vw,820px); object-fit:cover; object-position:62% 22%}
-.hero-img:before{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,#130C08 0,#130C08 var(--pt),rgba(19,12,8,0) calc(var(--pt) + 110px)),linear-gradient(105deg,rgba(18,11,7,.55) 0%,rgba(18,11,7,.2) 40%,rgba(18,11,7,0) 62%)}
-.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:42%; z-index:1; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
+.hero-img img{width:100%; aspect-ratio:720/905; height:auto; object-fit:cover; object-position:50% 0}
+.hero-img:before{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,#130C08 0,#130C08 var(--pt),rgba(19,12,8,0) calc(var(--pt) + 110px)),linear-gradient(100deg,rgba(18,11,7,.78) 0%,rgba(18,11,7,.5) 42%,rgba(18,11,7,0) 66%)}
+.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:56px; background:linear-gradient(180deg,rgba(239,227,210,0),#EFE3D2) !important; z-index:1; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
 .brand{position:absolute; z-index:2; top:0; left:0; right:0}
 .brand .wrap{padding-top:26px}
 .sig{display:inline-block}
@@ -63,7 +63,9 @@ b{color:var(--ink)}
 .sig-role:before{content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,#D9B67A)}
 .sig-role:after{content:"✦"; font-size:9px; letter-spacing:0; color:#D9B67A}
 .hero-in{position:relative; z-index:2; margin-top:-150px; padding-bottom:36px}
-.hero-pill{position:absolute; z-index:2; left:0; right:0; top:calc(var(--pt) + 0.42 * clamp(540px,150vw,820px)); max-width:760px; margin:0 auto}
+.hero-pill{position:absolute; z-index:2; left:0; right:0; top:calc(var(--pt) + 0.44 * min(100vw,760px) * 905 / 720); max-width:760px; margin:0 auto}
+.hero-pill h1{margin-top:12px; max-width:64%; font-size:clamp(29px,7.9vw,52px); color:#FFF6E8; text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero-pill h1 em{color:#E9C98F}
 .hero-pill .wrap{max-width:none}
 .hero h1{margin-bottom:16px}
 .intro{padding:44px 0 48px}
@@ -73,7 +75,7 @@ b{color:var(--ink)}
 .qlist .gl{color:var(--caramel); font-size:10px; flex:none}
 
 /* ---------- форма ---------- */
-.form-band{padding:48px 0 56px}
+.form-band{padding:22px 0 56px}
 .form-band h2{margin:12px 0 10px}
 .form-card{background:var(--esp); border-radius:var(--r); padding:26px 20px; box-shadow:0 30px 60px rgba(60,36,18,.25); margin-top:22px; color:var(--on-dark)}
 label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:12px}
@@ -274,10 +276,8 @@ footer a{color:var(--caramel-d)}
 <section class="hero">
   <div class="hero-img"><img src="foto/oksana-4-vecher.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
   <div class="brand"><div class="wrap"><div class="sig"><span class="sig-name">Оксана<span>Смирнова</span></span><span class="sig-role">финансовый астролог</span></div></div></div>
-  <div class="hero-pill" style="--pt:clamp(178px,47vw,210px)"><div class="wrap"><div class="pill soft">◆ Расчёт по реальным планетам</div></div></div>
-  <div class="wrap hero-in">
-    <h1>Ваш прогноз по дате рождения <em>на текущий месяц</em></h1>
-  </div>
+  <div class="hero-pill" style="--pt:clamp(178px,47vw,210px)"><div class="wrap"><div class="pill soft">◆ Расчёт по реальным планетам</div>
+    <h1>Ваш прогноз по дате рождения <em>на текущий месяц</em></h1></div></div>
 </section>
 <section class="band cream2 form-band">
   <svg class="deco" style="right:-120px;top:-110px;width:340px;height:340px;opacity:.45" viewBox="0 0 200 200" aria-hidden="true">
@@ -306,23 +306,6 @@ footer a{color:var(--caramel-d)}
       </form>
       <p class="note">Время рождения не нужно. Расчёт идёт прямо в вашем телефоне: дата никуда не отправляется и нигде не сохраняется</p>
     </div>
-    <div class="how">
-      <div><b>6</b>ваших планет на день рождения, поэтому даты личные</div>
-      <div><b>9</b>планет неба месяца, положения по эфемеридам NASA</div>
-      <div><b>4</b>сферы жизни, у каждой свои дни по московскому времени</div>
-    </div>
-  </div>
-</section>
-
-<section class="band paper intro">
-  <div class="wrap">
-    <p class="lede"><b>Деньги, любовь, работа и силы.</b> Я всю жизнь работаю с деньгами и цифрами и знаю: деньги волнуют всех, даже когда их достаточно. Поэтому здесь всё по полочкам: ваш месяц по четырём сферам и конкретные дни</p>
-    <ul class="qlist">
-      <li><span class="gl">◆</span><span>Деньги в этом месяце придут или утекут</span></li>
-      <li><span class="gl">◆</span><span>В любви время сближаться или переждать</span></li>
-      <li><span class="gl">◆</span><span>В работе двигаться или притормозить</span></li>
-      <li><span class="gl">◆</span><span>Где брать силы, когда батарейка на нуле</span></li>
-    </ul>
   </div>
 </section>
 
