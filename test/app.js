@@ -538,6 +538,7 @@ var ZONE_BACK = [
   "не берите на себя чужие планы, проверьте, какие ваши цели ещё живые",
   "больше спите и не пропускайте сигналы тела"
 ];
+var ZONE_NAME = ["вы сами и самочувствие","личные деньги","общение и переписка","дом и семья","любовь и удовольствия","работа и здоровье","партнёр и договоры","общие деньги и долги","обучение и поездки","карьера","друзья и планы","отдых и восстановление"];
 /* запасной совет, если два события месяца попали в одну зону: советы не повторяются */
 var ZONE_ALT = [
   "выберите одну привычку, которая вас поддерживает, и держитесь её весь месяц",
@@ -589,12 +590,19 @@ function render(day, month1, year){
   var pl = SIGN_PL[sunSign], monthCap = MONTHS_NOM[mo].charAt(0).toUpperCase() + MONTHS_NOM[mo].slice(1);
   var sp = document.querySelectorAll(".js-sign-pl");
   for (var i=0;i<sp.length;i++) sp[i].textContent = pl;
-  document.getElementById("skyTitle").textContent = monthCap + " для всех " + pl;
-  document.getElementById("skyLede").textContent = "Это общий фон: он одинаковый у всех представителей вашего знака. Планеты меняют знак или разворачиваются, и у каждого знака это попадает в свою зону жизни. Вот что это значит для " + pl;
-
-  var sky = skyOfMonth(y, mo, sunSign), sh = "";
-  for (var s=0;s<sky.length;s++) sh += '<li><span class="d">'+dlabel(sky[s].day, mo)+'</span><span class="t"><span class="ev">'+sky[s].ev+'</span><span class="zone">У '+pl+' это '+sky[s].zone.split(": ")[0].toLowerCase()+'</span><span class="zd">'+sky[s].zone.split(": ")[1]+'</span>'+sky[s].mean+'<span class="do"><i>Что сделать</i>'+sky[s].todo+'</span></span></li>';
-  document.getElementById("skyList").innerHTML = sh;
+  /* общий фон одним абзацем: какие зоны жизни знака задевает небо месяца, дальше сразу к личному */
+  var sky = skyOfMonth(y, mo, sunSign), zs = [], back = false;
+  for (var s=0;s<sky.length;s++){
+    var zn = ZONE_NAME[ZONE.indexOf(sky[s].zone)];
+    if (zs.indexOf(zn) === -1 && zs.length < 3) zs.push(zn);
+    if (/назад/.test(sky[s].ev)) back = true;
+  }
+  var topics = zs.length ? (zs.length === 1 ? "одна тема: " : (zs.length === 2 ? "две темы: " : "три темы: ")) + zs.join(", ") : "";
+  var bg = '<b>' + monthCap + ' для всех ' + pl + '.</b> ' + (topics ? 'В фокусе ' + topics + '. ' : '') +
+           (back ? 'Часть планет идёт назад, поэтому в этих темах лучше доделывать и перепроверять, чем начинать новое. '
+                 : 'Планеты помогают двигаться вперёд в этих темах. ') +
+           'Это общее для всего знака. А что месяц значит лично для вас, по вашей дате и по каждой сфере, ниже';
+  document.getElementById("skyText").innerHTML = bg;
 
   var evs = findTransits(nat, r);
   var out = "";
