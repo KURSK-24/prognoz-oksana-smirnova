@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
 <title>Ваш месяц по дате рождения</title>
 <meta name="description" content="Личный расчёт месяца по дате рождения: транзиты к вашим планетам, деньги, любовь, работа, силы. Финансовый астролог Оксана Смирнова">
 <meta name="theme-color" content="#F6EEE3">
@@ -48,15 +48,21 @@ b{color:var(--ink)}
 
 /* ---------- первый экран: фото 1 ---------- */
 .hero{position:relative; background:var(--cream); overflow:hidden}
-.hero-img{position:relative; height:clamp(540px,140vw,820px)}
-.hero-img img{width:100%; height:100%; object-fit:cover; object-position:50% 18%}
-.hero-img:before{content:""; position:absolute; inset:0 0 auto 0; height:130px; z-index:1; background:linear-gradient(180deg,rgba(42,28,19,.45),transparent)}
-.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:58%; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
+.hero-img{position:relative; height:clamp(560px,150vw,860px); max-width:760px; margin:0 auto}
+.hero-img img{width:100%; height:100%; object-fit:cover; object-position:62% 22%}
+.hero-img:before{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(105deg,rgba(18,11,7,.72) 0%,rgba(18,11,7,.38) 38%,rgba(18,11,7,0) 62%),linear-gradient(180deg,rgba(18,11,7,.35),transparent 30%)}
+.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:50%; z-index:1; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
 .brand{position:absolute; z-index:2; top:0; left:0; right:0}
-.brand .wrap{display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:20px}
-.brand b{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:22px; color:#FFF8EE; white-space:nowrap}
-.brand span{font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:#FFF1DA; font-weight:600; text-align:right}
-.hero-in{position:relative; z-index:2; margin-top:-170px; padding-bottom:40px}
+.brand .wrap{padding-top:30px}
+.sig{display:inline-block}
+.sig-name{display:block; font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-weight:500; font-size:clamp(48px,13.5vw,74px); line-height:.9; letter-spacing:.005em;
+  color:#F3DFB6; background:linear-gradient(170deg,#FFF3DA 0%,#F1DDB4 38%,#D9B67A 72%,#C29A5E 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 14px rgba(0,0,0,.45))}
+.sig-name span{display:block; padding-left:.55em}
+.sig-role{display:flex; align-items:center; gap:12px; margin-top:16px; font-size:10.5px; letter-spacing:.46em; text-transform:uppercase; color:#F6E6C6; font-weight:600; text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.sig-role:before{content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,#D9B67A)}
+.sig-role:after{content:"✦"; font-size:9px; letter-spacing:0; color:#D9B67A}
+.hero-in{position:relative; z-index:2; margin-top:-190px; padding-bottom:40px}
 .hero .pill{margin-bottom:18px}
 .hero h1{margin-bottom:16px}
 .hero .lede{font-size:16px; margin-bottom:24px}
@@ -91,21 +97,24 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .res-head .sign{font-family:"Cormorant Garamond",serif; font-size:clamp(46px,11vw,66px); font-weight:600; line-height:1.05; margin:10px 0 4px; color:var(--esp)}
 .res-head .dateline{font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--caramel-d); font-weight:600}
 .res-head .meta{margin:16px auto 0; max-width:520px; font-size:15px}
-.natal{list-style:none; padding:0; margin:28px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:10px}
-@media (max-width:460px){ .natal{grid-template-columns:1fr} }
-.natal li{background:#fff; border:1px solid var(--line); border-radius:16px; padding:14px 14px 14px 62px; position:relative; min-height:76px}
-.natal .pg{position:absolute; left:12px; top:14px; width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--esp); color:var(--gold-l); font-size:19px; line-height:1}
-.natal .pn{display:block; font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--esp)}
-.natal .pd{display:block; font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:600; color:var(--caramel-d); line-height:1.25}
-.natal .pr{display:block; font-size:12.5px; color:var(--ink-3); line-height:1.4; margin-top:2px}
+.parts{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:24px 0 0; text-align:left}
+@media (max-width:460px){ .parts{grid-template-columns:1fr} }
+.parts div{background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; font-size:14px; line-height:1.5; color:var(--ink-2)}
+.parts b{display:block; font-family:"Cormorant Garamond",serif; font-size:23px; font-weight:600; line-height:1.15; color:var(--caramel-d); margin-bottom:4px}
 
-/* ---------- небо месяца ---------- */
+/* ---------- небо месяца для знака ---------- */
 .sky-band h2{margin:10px 0 12px}
 .skylist{list-style:none; padding:0; margin:20px 0 0}
-.skylist li{display:flex; gap:16px; padding:14px 0; border-top:1px solid var(--dline); font-size:15px; color:var(--on-dark)}
+.skylist li{display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--dline); font-size:15px; color:var(--on-dark-2); line-height:1.55}
 .skylist li:last-child{border-bottom:1px solid var(--dline)}
 .skylist .d, .dates .d{flex:none; width:70px; font-family:"Cormorant Garamond",serif; font-weight:600; font-size:20px; line-height:1.25}
 .skylist .d{color:var(--gold-l)}
+.skylist .t{flex:1}
+.skylist .ev{display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--on-dark-3); font-weight:600; margin-bottom:6px}
+.skylist .zone{display:block; font-family:"Cormorant Garamond",serif; font-size:22px; font-weight:600; line-height:1.2; color:var(--gold-l); margin-bottom:6px}
+.skylist .zd{display:block; font-size:12.5px; color:var(--on-dark-3); margin:-2px 0 8px}
+.skylist .do{display:block; margin-top:8px; color:#FFF6E8}
+.skylist .do i{font-style:normal; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-right:8px}
 
 /* ---------- сферы ---------- */
 .spheres-band{padding:56px 0 30px; background:var(--cream)}
@@ -122,8 +131,23 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .keyev{font-size:15.5px}
 .dates{list-style:none; padding:0; margin:18px 0}
 .dates li{display:flex; gap:14px; padding:13px 0; font-size:14.5px; line-height:1.5}
-.dates .t{flex:1}
-.astro{display:block; margin-top:4px; font-size:12px; line-height:1.4; opacity:.62; font-weight:400}
+.dates .t{flex:1; min-width:0; overflow-wrap:break-word}
+.dates .t > b{display:block; font-size:15.5px; margin-bottom:6px}
+.pm{display:block; margin-top:9px; font-size:14px; line-height:1.5}
+.pm i{display:table; font-style:normal; font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; margin:0 0 4px; padding:3px 7px; border-radius:6px}
+.pm.plus i{background:rgba(201,167,102,.22)} .pm.minus i{background:rgba(181,82,63,.16)}
+.pm.act{margin-top:8px; padding:9px 11px; border-radius:10px; font-weight:600}
+.pm.act i{padding:0; background:none}
+.main-tag{display:inline-block; font-size:9px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; padding:3px 8px; border-radius:100px; margin-bottom:6px}
+.sphere-money .main-tag,.sphere-work .main-tag{background:var(--goldfill); color:var(--esp)}
+.sphere-love .main-tag,.sphere-power .main-tag{background:var(--esp); color:var(--gold-l)}
+.sphere-money .pm.act,.sphere-work .pm.act{background:rgba(241,221,180,.08); color:#FFF6E8}
+.sphere-money .pm.act i,.sphere-work .pm.act i{color:var(--gold)}
+.sphere-money .pm i,.sphere-work .pm i{color:var(--gold-l)}
+.sphere-love .pm.act,.sphere-power .pm.act{background:rgba(255,255,255,.75); color:var(--esp)}
+.sphere-love .pm.act i,.sphere-power .pm.act i{color:var(--caramel-d)}
+.sphere-love .pm i,.sphere-power .pm i{color:var(--esp)}
+.astro{display:block; margin-top:6px; font-size:11.5px; line-height:1.4; opacity:.55; font-weight:400}
 .keyev .astro{margin-top:6px}
 .dates li.hard .d:before, .dates li.soft .d:before{content:""; display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:7px; vertical-align:middle}
 .dates li.hard .d:before{background:var(--hard)} .dates li.soft .d:before{background:var(--soft)}
@@ -135,7 +159,8 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 /* открытая петля в конце сферы */
 .loop{margin-top:22px; padding:22px 18px 18px; border-radius:18px; position:relative}
 .loop .lp-h{font-family:"Cormorant Garamond",serif; font-size:25px; font-weight:600; line-height:1.15; margin:0 0 10px}
-.loop i{display:block; font-family:"Cormorant Garamond",serif; font-size:21px; line-height:1.35; padding-left:14px; margin:0 0 12px}
+.loop i{display:block; font-family:"Cormorant Garamond",serif; font-size:21px; line-height:1.35; padding-left:14px; margin:0 0 14px}
+.loop .lp-q{font-size:10.5px; letter-spacing:.24em; text-transform:uppercase; font-weight:700; margin:0 0 8px; opacity:.8}
 .loop p{font-size:14.5px; margin:0 0 16px}
 .loop-btn{display:flex; align-items:center; justify-content:center; gap:10px; padding:16px 18px; border-radius:14px; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; min-height:56px}
 /* тёмная сфера (деньги, работа) */
@@ -245,8 +270,8 @@ footer a{color:var(--caramel-d)}
 <body>
 
 <section class="hero">
-  <div class="hero-img"><img src="foto/oksana-1-oblozhka.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
-  <div class="brand"><div class="wrap"><b>Оксана Смирнова</b><span>финансовый астролог</span></div></div>
+  <div class="hero-img"><img src="foto/oksana-4-vecher.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
+  <div class="brand"><div class="wrap"><div class="sig"><span class="sig-name">Оксана<span>Смирнова</span></span><span class="sig-role">финансовый астролог</span></div></div></div>
   <div class="wrap hero-in">
     <div class="pill soft">◆ Расчёт по реальным планетам</div>
     <h1>Ваш прогноз по дате рождения <em>на текущий месяц</em></h1>
@@ -288,7 +313,7 @@ footer a{color:var(--caramel-d)}
       <p class="note">Время рождения не нужно. Расчёт идёт прямо в вашем телефоне: дата никуда не отправляется и нигде не сохраняется</p>
     </div>
     <div class="how">
-      <div><b>6</b>ваших планет на день рождения, с точным градусом</div>
+      <div><b>6</b>ваших планет на день рождения, поэтому даты личные</div>
       <div><b>9</b>планет неба месяца, положения по эфемеридам NASA</div>
       <div><b>4</b>сферы жизни, у каждой свои дни по московскому времени</div>
     </div>
@@ -303,12 +328,14 @@ footer a{color:var(--caramel-d)}
     </svg>
     <div class="wrap">
       <div class="res-head">
-        <div class="eyebrow">Ваша карта на день рождения</div>
+        <div class="eyebrow">Ваш знак</div>
         <div class="sign" id="signLine"></div>
         <div class="dateline" id="dateLine"></div>
-        <p class="meta">Это ваши личные точки. Всё, что ниже, посчитано относительно них: какая планета неба, в какой день и под каким углом их задевает</p>
+        <div class="parts">
+          <div><b>1. Общий фон для знака</b>Что меняется на небе в этом месяце и в какой зоне жизни это сработает у <span class="js-sign-pl">вашего знака</span></div>
+          <div><b>2. Ваши личные даты</b>Посчитаны по вашему дню рождения. У другого человека того же знака они будут другими</div>
+        </div>
       </div>
-      <ul class="natal" id="natal"></ul>
     </div>
   </section>
 
@@ -318,9 +345,9 @@ footer a{color:var(--caramel-d)}
       <circle cx="340" cy="64" r="34" fill="#F1DDB4"/><circle cx="354" cy="56" r="31" fill="#2E1F15"/>
     </svg>
     <div class="wrap">
-      <div class="eyebrow">Общий фон</div>
-      <h2>Небо месяца: <span class="cur-month">октябрь 2026</span></h2>
-      <p>Эти события одинаковые для всех. Важнее, какие из ваших точек они задевают, это разобрано по сферам ниже</p>
+      <div class="eyebrow">Общий фон для знака</div>
+      <h2 id="skyTitle">Октябрь для вашего знака</h2>
+      <p id="skyLede">Это общий фон для всех представителей вашего знака</p>
       <ul class="skylist" id="skyList"></ul>
     </div>
   </section>
@@ -329,13 +356,14 @@ footer a{color:var(--caramel-d)}
     <div class="wrap">
       <div class="eyebrow" style="text-align:center">Ваши личные даты</div>
       <h2>Месяц по четырём сферам</h2>
+      <p style="margin-bottom:8px">Это уже только ваше: какие дни задевают именно ваши планеты. У каждой даты написано, что она даёт, как может сыграть в плюс и в минус, и что сделать, если пошло в минус</p>
       <p><span class="legend"><i style="background:#C9A766"></i>поддержка</span> &nbsp; <span class="legend"><i style="background:#B5523F"></i>напряжение</span></p>
       <div id="spheres"></div>
     </div>
   </section>
 
   <section class="bridge">
-    <div class="bridge-img"><img src="foto/oksana-4-vecher.jpg" alt="Оксана Смирнова вечером в городе" loading="lazy"></div>
+    <div class="bridge-img"><img src="foto/oksana-1-oblozhka.jpg" alt="Оксана Смирнова" loading="lazy"></div>
     <div class="wrap bridge-in">
       <div class="eyebrow">А теперь главное</div>
       <h2>Это ваш месяц. А что с вашим годом?</h2>
@@ -377,21 +405,37 @@ footer a{color:var(--caramel-d)}
       <div class="svc">
         <div class="svc-img"><img src="foto/oksana-3-kofe.jpg" alt="Оксана Смирнова с кофе" loading="lazy"></div>
         <div class="svc-in">
-          <div class="eyebrow">Личный прогноз</div>
-          <h2>Ваши 12 месяцев вперёд: деньги, работа, любовь, здоровье</h2>
+          <div class="eyebrow">Годовой прогноз по всем сферам</div>
+          <h2>Ваш год по месяцам: где возможности, а где ловушки</h2>
+          <p>Индивидуальный годовой прогноз по всем сферам жизни с планом действий. Вы увидите, как пройдут месяцы, где ждут возможности, а где ловушки, где действовать, а где ждать. И получите список компенсирующих действий на трудные периоды</p>
+          <p>Ваш год не начинается 1 января, а решения не ждут дня рождения. Я смотрю ваш текущий личный год по соляру и расписываю транзиты на <b>12 месяцев от дня, когда вы обратились</b></p>
 
-          <h3>Зачем он нужен</h3>
-          <p>Многие откладывают: «закажу на день рождения» или «к Новому году». Но ваш год не начинается 1 января, а решения не ждут дня рождения: работа, деньги и отношения уже на столе</p>
-          <p>Я смотрю ваш текущий личный год по соляру и расписываю транзиты на <b>12 месяцев от дня, когда вы обратились</b>. Так прогноз отвечает на вопросы, которые стоят перед вами сейчас, а не через полгода</p>
-          <p>Прогноз не программирует вашу жизнь. Сценарист всё равно вы. Прогноз показывает, когда ветер попутный, а грести придётся самим</p>
+          <h3>Для кого</h3>
+          <p>Для тех, кто хочет быть готовым к меняющимся новостям. Кто не хочет смотреть, как планы рушатся в один миг. И у кого тревога и хаос забирают силы</p>
 
-          <h3>Что вы получите</h3>
+          <h3>Что можно понять</h3>
           <ul class="inc">
-            <li><span class="ck">◆</span><span>Соляр: главные темы вашего личного года по всем сферам</span></li>
-            <li><span class="ck">◆</span><span>Ключевые транзиты на 12 месяцев вперёд с периодами: когда действовать, а когда переждать</span></li>
-            <li><span class="ck">◆</span><span>Ответы на ваши личные вопросы, с которыми вы приходите</span></li>
-            <li><span class="ck">◆</span><span>Объясняю простым языком, без астрологической духоты</span></li>
+            <li><span class="ck">◆</span><span>Будут ли в году финансовые потери</span></li>
+            <li><span class="ck">◆</span><span>В какие месяцы нельзя брать кредиты и рисковать деньгами</span></li>
+            <li><span class="ck">◆</span><span>Через что придут деньги в этом году и где дополнительные источники заработка</span></li>
+            <li><span class="ck">◆</span><span>Когда стартовать с проектом, менять работу, просить повышение</span></li>
+            <li><span class="ck">◆</span><span>Встреча второй половинки или предложение</span></li>
+            <li><span class="ck">◆</span><span>Когда кризисы в отношениях и как их сгладить</span></li>
+            <li><span class="ck">◆</span><span>Когда дети требуют внимания, случится ли беременность</span></li>
+            <li><span class="ck">◆</span><span>Когда риск для здоровья</span></li>
           </ul>
+
+          <h3>Что внутри</h3>
+          <ul class="inc">
+            <li><span class="ck">◆</span><span>Практики на запуск года</span></li>
+            <li><span class="ck">◆</span><span>Общее состояние и самые яркие события года</span></li>
+            <li><span class="ck">◆</span><span>Семья и недвижимость, личная жизнь</span></li>
+            <li><span class="ck">◆</span><span>Карьера, работа, деньги</span></li>
+            <li><span class="ck">◆</span><span>Дети, творчество, обучение, здоровье</span></li>
+            <li><span class="ck">◆</span><span>Важные даты, месяцы и периоды</span></li>
+          </ul>
+          <p><b>Формат:</b> голосовой разбор на 40-60 минут, в зависимости от картины года, и PDF с датами и периодами</p>
+          <div class="quote">Прогноз не про страшилки и программирование. Это не приговор, а карта. Моя задача не предсказывать «сбудется или не сбудется», а дать инструмент: даты, периоды, ключевые точки. Прогноз - это план действий, а не гадание на кофейной гуще</div>
 
           <h3>Как проходит</h3>
           <ol class="steps">
