@@ -48,12 +48,12 @@ b{color:var(--ink)}
 
 /* ---------- первый экран: фото 1 ---------- */
 .hero{position:relative; background:var(--cream); overflow:hidden}
-.hero-img{position:relative; height:clamp(560px,150vw,860px); max-width:760px; margin:0 auto}
-.hero-img img{width:100%; height:100%; object-fit:cover; object-position:62% 22%}
-.hero-img:before{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(105deg,rgba(18,11,7,.72) 0%,rgba(18,11,7,.38) 38%,rgba(18,11,7,0) 62%),linear-gradient(180deg,rgba(18,11,7,.35),transparent 30%)}
-.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:50%; z-index:1; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
+.hero-img{--pt:clamp(178px,47vw,210px); position:relative; padding-top:var(--pt); max-width:760px; margin:0 auto; background:#130C08}
+.hero-img img{width:100%; height:clamp(540px,150vw,820px); object-fit:cover; object-position:62% 22%}
+.hero-img:before{content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,#130C08 0,#130C08 var(--pt),rgba(19,12,8,0) calc(var(--pt) + 110px)),linear-gradient(105deg,rgba(18,11,7,.55) 0%,rgba(18,11,7,.2) 40%,rgba(18,11,7,0) 62%)}
+.hero-img:after{content:""; position:absolute; inset:auto 0 0 0; height:42%; z-index:1; background:linear-gradient(180deg,rgba(246,238,227,0) 0%,rgba(246,238,227,.6) 40%,rgba(246,238,227,.94) 72%,var(--cream) 100%)}
 .brand{position:absolute; z-index:2; top:0; left:0; right:0}
-.brand .wrap{padding-top:30px}
+.brand .wrap{padding-top:26px}
 .sig{display:inline-block}
 .sig-name{display:block; font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-weight:500; font-size:clamp(48px,13.5vw,74px); line-height:.9; letter-spacing:.005em;
   color:#F3DFB6; background:linear-gradient(170deg,#FFF3DA 0%,#F1DDB4 38%,#D9B67A 72%,#C29A5E 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
@@ -62,10 +62,12 @@ b{color:var(--ink)}
 .sig-role{display:flex; align-items:center; gap:12px; margin-top:16px; font-size:10.5px; letter-spacing:.46em; text-transform:uppercase; color:#F6E6C6; font-weight:600; text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .sig-role:before{content:""; width:34px; height:1px; background:linear-gradient(90deg,transparent,#D9B67A)}
 .sig-role:after{content:"✦"; font-size:9px; letter-spacing:0; color:#D9B67A}
-.hero-in{position:relative; z-index:2; margin-top:-190px; padding-bottom:40px}
-.hero .pill{margin-bottom:18px}
+.hero-in{position:relative; z-index:2; margin-top:-150px; padding-bottom:36px}
+.hero-pill{position:absolute; z-index:2; left:0; right:0; top:calc(var(--pt) + 0.42 * clamp(540px,150vw,820px)); max-width:760px; margin:0 auto}
+.hero-pill .wrap{max-width:none}
 .hero h1{margin-bottom:16px}
-.hero .lede{font-size:16px; margin-bottom:24px}
+.intro{padding:44px 0 48px}
+.intro .lede{font-size:16px; margin-bottom:24px}
 .qlist{list-style:none; margin:0; padding:0; border-top:1px solid var(--line-2)}
 .qlist li{display:flex; gap:14px; align-items:baseline; padding:13px 2px; border-bottom:1px solid var(--line-2); font-size:15px; color:var(--ink)}
 .qlist .gl{color:var(--caramel); font-size:10px; flex:none}
@@ -272,19 +274,11 @@ footer a{color:var(--caramel-d)}
 <section class="hero">
   <div class="hero-img"><img src="foto/oksana-4-vecher.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
   <div class="brand"><div class="wrap"><div class="sig"><span class="sig-name">Оксана<span>Смирнова</span></span><span class="sig-role">финансовый астролог</span></div></div></div>
+  <div class="hero-pill" style="--pt:clamp(178px,47vw,210px)"><div class="wrap"><div class="pill soft">◆ Расчёт по реальным планетам</div></div></div>
   <div class="wrap hero-in">
-    <div class="pill soft">◆ Расчёт по реальным планетам</div>
     <h1>Ваш прогноз по дате рождения <em>на текущий месяц</em></h1>
-    <p class="lede"><b>Деньги, любовь, работа и силы.</b> Я всю жизнь работаю с деньгами и цифрами и знаю: деньги волнуют всех, даже когда их достаточно. Поэтому здесь всё по полочкам: ваш месяц по четырём сферам и конкретные дни</p>
-    <ul class="qlist">
-      <li><span class="gl">◆</span><span>Деньги в этом месяце придут или утекут</span></li>
-      <li><span class="gl">◆</span><span>В любви время сближаться или переждать</span></li>
-      <li><span class="gl">◆</span><span>В работе двигаться или притормозить</span></li>
-      <li><span class="gl">◆</span><span>Где брать силы, когда батарейка на нуле</span></li>
-    </ul>
   </div>
 </section>
-
 <section class="band cream2 form-band">
   <svg class="deco" style="right:-120px;top:-110px;width:340px;height:340px;opacity:.45" viewBox="0 0 200 200" aria-hidden="true">
     <g class="wheel" fill="none" stroke="#B87F4C" stroke-width=".6">
@@ -317,6 +311,18 @@ footer a{color:var(--caramel-d)}
       <div><b>9</b>планет неба месяца, положения по эфемеридам NASA</div>
       <div><b>4</b>сферы жизни, у каждой свои дни по московскому времени</div>
     </div>
+  </div>
+</section>
+
+<section class="band paper intro">
+  <div class="wrap">
+    <p class="lede"><b>Деньги, любовь, работа и силы.</b> Я всю жизнь работаю с деньгами и цифрами и знаю: деньги волнуют всех, даже когда их достаточно. Поэтому здесь всё по полочкам: ваш месяц по четырём сферам и конкретные дни</p>
+    <ul class="qlist">
+      <li><span class="gl">◆</span><span>Деньги в этом месяце придут или утекут</span></li>
+      <li><span class="gl">◆</span><span>В любви время сближаться или переждать</span></li>
+      <li><span class="gl">◆</span><span>В работе двигаться или притормозить</span></li>
+      <li><span class="gl">◆</span><span>Где брать силы, когда батарейка на нуле</span></li>
+    </ul>
   </div>
 </section>
 
