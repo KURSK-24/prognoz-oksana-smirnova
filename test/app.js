@@ -157,7 +157,7 @@ function sphereOf(T, N){
 }
 
 var SPHERES = [
-  { key:"money", title:"Деньги", icon:"₽", moonTo:"jupiter", natal:["venus","jupiter"],
+  { key:"money", title:"Деньги", icon:"₽", only:"деньги", moonTo:"jupiter", natal:["venus","jupiter"],
     lead:{ hard:"В деньгах это соблазн: хочется вписаться в то, что выглядит быстрым и красивым, или закрыть тревогу покупкой. Такие траты потом разбираются дольше всех",
            easy:"В деньгах это окно. С неба ничего не упадёт, но закрыть давний денежный вопрос сейчас реально",
            calm:"Крупных транзитов к вашим денежным точкам в этом месяце нет. Фон ровный: хорошо считать, планировать и спокойно доводить начатое"},
@@ -168,7 +168,7 @@ var SPHERES = [
     moonHard:["Напряжённый денежный день: легко потратить на эмоциях","Ещё один день на пределе: не занимайте и не одалживайте, эмоции сильнее расчёта"],
     ask:{ hard:"В какой месяц ближайшего года у меня откроется денежное окно, и когда лучше не рисковать?",
           easy:"Когда в ближайшие 12 месяцев просить повышение или запускать своё дело, чтобы это сработало?" } },
-  { key:"love", title:"Любовь и отношения", icon:"♥", moonTo:"venus", natal:["venus"],
+  { key:"love", title:"Любовь и отношения", icon:"♥", only:"любовь", moonTo:"venus", natal:["venus"],
     lead:{ hard:"В отношениях это трение на ровном месте. Спор из-за мелочи, которая вчера прошла бы мимо ушей",
            easy:"В отношениях это тепло, которое приходит само. Хочется близости, разговоры получаются без брони",
            calm:"Сильных транзитов к вашей Венере в этом месяце нет. Отношения живут в своём ритме, и погода в них зависит от вас больше, чем от неба"},
@@ -179,7 +179,7 @@ var SPHERES = [
     moonHard:["Острый день: раздражительность выше обычного, отношения сегодня не выясняйте","Ещё один резкий день: слова прозвучат жёстче, чем вы хотели"],
     ask:{ hard:"Когда в ближайшие 12 месяцев этот узел в отношениях наконец развяжется?",
           easy:"В какие месяцы ближайшего года двери для серьёзных отношений будут открыты?" } },
-  { key:"work", title:"Работа и дело", icon:"◆", moonTo:"mars", natal:["mars","saturn","mercury"],
+  { key:"work", title:"Работа и дело", icon:"◆", only:"работа", moonTo:"mars", natal:["mars","saturn","mercury"],
     lead:{ hard:"В работе это давление. Планы буксуют, ответы затягиваются. Идея может быть отличной, просто момент просит пересобрать план",
            easy:"В работе это ход вперёд. Появляется энергия на задачи, которые стояли неделями",
            calm:"Крупных транзитов к вашим рабочим точкам в этом месяце нет. Хороший месяц для рутины, которую вы откладывали"},
@@ -190,7 +190,7 @@ var SPHERES = [
     moonHard:["Тяжёлый рабочий день: легко поссориться с коллегами, новое не начинайте","Ещё один буксующий день: согласования затянутся, важное не назначайте"],
     ask:{ hard:"Увольняться сейчас или в ближайший год будет момент, когда уйти легче?",
           easy:"Когда в ближайшие 12 месяцев мне лучше всего менять работу или начинать своё?" } },
-  { key:"power", title:"Силы и состояние", icon:"☾", moonTo:"sun", natal:["sun"],
+  { key:"power", title:"Силы и состояние", icon:"☾", only:"силы", moonTo:"sun", natal:["sun"],
     lead:{ hard:"По силам батарейка садится быстрее обычного. Энергия уходит в мысли по кругу: прокрутить разговор, представить худшее",
            easy:"По силам это ровный и поддерживающий месяц. Хватает на то, что вы забросили из-за усталости",
            calm:"Сильных транзитов к вашему Солнцу нет. Самочувствие сейчас больше зависит от режима, чем от неба"},
@@ -384,14 +384,17 @@ function buildSphere(sp, evs, nat, r, month){
   html += '<div class="todo"><b>Что с этим делать</b><p>'+sp.todo[mode]+'</p>';
   if (keyDays.length) html += '<p class="when"><span>Когда</span>'+listDays(keyDays, month)+'</p>';
   html += '</div>';
-  html += '<p class="nuance"><span>Важный нюанс</span>'+NUANCE[sp.key]+'</p>';
-  html += '<div class="ask"><p class="ask-intro">А вопрос про свой год у вас, скорее всего, звучит так:</p>';
+  /* открытая петля: месяц и одна сфера → год по всем сферам, без цены */
+  html += '<div class="loop"><p class="lp-h">Это только '+MONTHS_NOM[month].toLowerCase()+' и только '+sp.only+'</p>';
+  html += '<p>А вопрос про свой год у вас, скорее всего, звучит так:</p>';
   html += '<i>'+sp.ask[mode==="hard" ? "hard" : "easy"]+'</i>';
-  html += '<a class="ask-link" href="#year-theory">Где увидеть ответ <span class="arw">&#8595;</span></a></div>';
+  html += '<p>Ответ на него, по месяцам, я даю в личном прогнозе на 12 месяцев по вашей полной карте</p>';
+  html += '<a class="loop-btn js-loop" href="#service">Как получить личный прогноз <span aria-hidden="true">&#8595;</span></a></div>';
   html += '</article>';
   return html;
 }
 
+/* NUANCE больше не выводится (08.10: вместо него открытая петля), текст оставлен для истории */
 var NUANCE = {"money": "Здесь видно, <b>когда</b>. А через что именно придут или уйдут деньги: зарплата, клиенты, крупная покупка, долг, зависит от времени и места вашего рождения. По ним считаются дома гороскопа, и одни и те же даты у разных людей срабатывают в разных делах. Эту поправку я делаю в индивидуальном прогнозе", "love": "Даты по дате рождения показывают погоду. С кем и в каком сценарии она сыграет: партнёр, новое знакомство, бывший, зависит от времени вашего рождения, оно задаёт дом отношений в карте. Эти нюансы я разбираю только в индивидуальном прогнозе", "work": "Без времени рождения не видно вашей оси карьеры: где в карте стоит вершина гороскопа и какие транзиты бьют прямо в неё. Из-за этого один и тот же квадрат у одного человека про начальника, у другого про собственный проект. Такие корректировки я делаю в индивидуальном прогнозе", "power": "Самочувствие в астрологии сильнее всего читается по Луне и Асценденту, а они зависят от точного времени рождения: Луна за сутки проходит целых 13 градусов. Поэтому здесь общий фон, а точные периоды спада и подъёма я считаю в индивидуальном прогнозе"};
 
 var SKY_TEXT = {
@@ -439,16 +442,11 @@ function render(day, month1, year){
   var out = "";
   for (var k=0;k<SPHERES.length;k++){
     out += buildSphere(SPHERES[k], evs, nat, r, mo);
-    if (k === 0) out += '<div class="inline-offer"><b>Это деньги на один месяц. А какими будут ваши 12 месяцев?</b>' +
-      '<p>В личном прогнозе я расписываю денежные, рабочие и любовные периоды на год вперёд по вашей полной карте</p>' +
-      '<a class="cta solid js-buy" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Хочу прогноз на год · 15 000 ₽</a></div>';
   }
   document.getElementById("spheres").innerHTML = out;
 
   var res = document.getElementById("result");
   res.classList.remove("hidden");
-  var sb = document.getElementById("stickyBuy");
-  if (sb){ sb.classList.add("on"); document.body.classList.add("has-sticky"); }
   res.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
@@ -485,19 +483,13 @@ document.getElementById("form").addEventListener("submit", function(e){
   goal("calc_submit");
 });
 
-/* Цели на кнопки в личку */
-(function(){
-  /* все кнопки покупки, в том числе созданные после расчёта */
-  document.addEventListener("click", function(e){
-    var a = e.target.closest ? e.target.closest(".js-buy") : null;
-    if (a) goal("click_god");
-  });
-  /* липкая кнопка прячется, когда виден финальный блок предложения */
-  var fin = document.getElementById("offer1"), sb = document.getElementById("stickyBuy");
-  if (fin && sb && "IntersectionObserver" in window){
-    new IntersectionObserver(function(en){ if (document.body.classList.contains("has-sticky")) sb.classList.toggle("on", !en[0].isIntersecting); }).observe(fin);
-  }
-})();
+/* Цели: кнопка «ГОД» в личку, кнопки петли в сферах, переход в канал */
+document.addEventListener("click", function(e){
+  if (!e.target.closest) return;
+  if (e.target.closest(".js-buy")) goal("click_god");
+  else if (e.target.closest(".js-loop")) goal("click_loop");
+  else if (e.target.closest(".js-channel")) goal("click_channel");
+});
 
 window.__PROGNOZ_TEST = {useSky:useSky, natal:A.natal, findTransits:findTransits, monthRange:monthRange, moonDays:moonDays, render:render};
 })();
