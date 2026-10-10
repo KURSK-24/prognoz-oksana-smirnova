@@ -737,7 +737,7 @@ function buildMonth(evs, month, monthCap, seed){
     var txt = L.txt[st].replace("{s}", es ? whenPhrase(es) : "").replace("{h}", eh ? whenPhrase(eh) : "");
     lh += '<div class="lock"><div class="lk-top"><span class="lk-ic">'+L.icon+'</span><h4>'+L.title+'</h4></div>'+
           '<p class="lk-count">'+txt+'</p>'+
-          '<a class="lk-btn js-loop" href="#service">'+L.btn[st]+' <span aria-hidden="true">&#8594;</span></a></div>';
+          '<a class="lk-btn js-loop" href="#year">'+L.btn[st]+' <span aria-hidden="true">&#8594;</span></a></div>';
   }
   document.getElementById("locks").innerHTML = lh;
 }
