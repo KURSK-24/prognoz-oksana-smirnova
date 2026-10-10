@@ -212,6 +212,29 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .tag.calm{background:transparent; color:inherit; border:1px solid currentColor; opacity:.8}
 .sphere-love .tag.easy,.sphere-power .tag.easy{background:var(--esp); color:var(--gold-l)}
 
+/* месяц по дате: тон, ключевые даты, закрытые сферы, компенсаторика */
+.month-card{background:linear-gradient(180deg,#3A2819,#24170F); color:var(--on-dark-2); border-radius:26px; padding:24px 20px; margin-top:6px}
+.month-card .tag{display:inline-block; margin-bottom:14px}
+.month-card p{color:var(--on-dark-2)} .month-card b{color:#FFF6E8}
+.month-card .dates li{border-top:1px solid var(--dline); color:var(--on-dark-2)}
+.month-card .dates .d{color:var(--gold)}
+.month-card .dates .t > b{color:#FFF6E8}
+.month-card .note-time{font-size:13px; color:var(--on-dark-3); margin:6px 0 0}
+.locks-h{text-align:center; margin:40px 0 8px}
+.locks-sub{text-align:center; margin:0 0 20px}
+.locks{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:520px){ .locks{grid-template-columns:1fr} }
+.lock{background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:18px; display:flex; flex-direction:column; gap:8px}
+.lock .lk-top{display:flex; align-items:center; gap:10px}
+.lock .lk-ic{width:38px; height:38px; border-radius:50%; display:grid; place-items:center; background:var(--esp); color:var(--gold-l); font-size:16px; flex:none}
+.lock h4{margin:0; font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:600; color:var(--esp)}
+.lock .lk-count{font-size:14px; color:var(--ink); font-weight:600; margin:0}
+.lock .lk-q{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:19px; line-height:1.3; color:var(--caramel-d); margin:0}
+.lock .lk-closed{font-size:12.5px; color:var(--ink-3); margin:0; padding-top:8px; border-top:1px dashed var(--line-2)}
+.comp{margin-top:26px; background:#F7E6DB; border-radius:26px; padding:24px 20px}
+.comp h3{margin:8px 0 12px}
+.comp .inc li{background:rgba(255,255,255,.7)}
+.comp .loop-btn{background:var(--caramelfill); color:#fff; box-shadow:0 12px 26px rgba(142,92,49,.25)}
 /* ---------- переход месяц → год: фото 4 ---------- */
 .bridge{position:relative; background:#1C120C; color:var(--on-dark); overflow:hidden}
 .bridge-img{position:relative; height:clamp(420px,115vw,640px)}
@@ -328,7 +351,7 @@ footer a{color:var(--caramel-d)}
         <div class="bg-card">
           <div class="eyebrow">Общий фон на месяц</div>
           <p id="skyText">Общий фон для вашего знака</p>
-          <a class="bg-cta" href="#spheres-start">Мой прогноз по сферам <span aria-hidden="true">&#8595;</span></a>
+          <a class="bg-cta" href="#spheres-start">Мой месяц по дате рождения <span aria-hidden="true">&#8595;</span></a>
         </div>
       </div>
     </div>
@@ -336,11 +359,27 @@ footer a{color:var(--caramel-d)}
 
   <section class="spheres-band" id="spheres-start">
     <div class="wrap">
-      <div class="eyebrow" style="text-align:center">Ваши личные даты</div>
-      <h2>Месяц по четырём сферам</h2>
-      <p style="margin-bottom:8px">Это уже только ваше: какие дни задевают именно ваши планеты. У каждой даты написано, что она даёт, как может сыграть в плюс и в минус, и что сделать, если пошло в минус</p>
-      <p><span class="legend"><i style="background:#C9A766"></i>поддержка</span> &nbsp; <span class="legend"><i style="background:#B5523F"></i>напряжение</span></p>
-      <div id="spheres"></div>
+      <div class="eyebrow" style="text-align:center">Ваш месяц по дате рождения</div>
+      <h2 id="monthTitle">Ваш месяц</h2>
+      <div id="month"></div>
+
+      <h3 class="locks-h">Как этот месяц сыграет в вашей жизни</h3>
+      <p class="locks-sub">Даты выше посчитаны по вашей дате рождения. А в какой сфере сработает каждая из них, видно только по времени и месту рождения и только в разрезе года</p>
+      <div class="locks" id="locks"></div>
+
+      <div class="comp">
+        <div class="eyebrow">Компенсаторика</div>
+        <h3>Если месяц или сфера напряжённые, это не приговор</h3>
+        <p>В годовом прогнозе я смотрю транзиты по каждой сфере и подбираю компенсаторику: конкретные действия, которые смягчают трудный период. Без волшебства. Например:</p>
+        <ul class="inc">
+          <li><span class="ck">◆</span><span>плановое обследование заранее, если напряжение приходится на здоровье</span></li>
+          <li><span class="ck">◆</span><span>смена формата работы, когда тяжёлая планета проходит по зоне ежедневной работы</span></li>
+          <li><span class="ck">◆</span><span>ремонт или осмотр машины, если напряжение идёт по дому и имуществу</span></li>
+          <li><span class="ck">◆</span><span>аскезы по субботам в периоды Сатурна</span></li>
+        </ul>
+        <p>Какие действия нужны именно вам и в какие месяцы, я подбираю под вашу карту и ваш год</p>
+        <a class="loop-btn js-loop" href="#service">Как получить годовой прогноз <span aria-hidden="true">&#8595;</span></a>
+      </div>
     </div>
   </section>
 
