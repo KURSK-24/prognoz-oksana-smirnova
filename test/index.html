@@ -237,6 +237,19 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .comp h3{margin:8px 0 12px}
 .comp .inc li{background:rgba(255,255,255,.7)}
 .comp .loop-btn{background:var(--caramelfill); color:#fff; box-shadow:0 12px 26px rgba(142,92,49,.25)}
+.cmp{display:flex; flex-direction:column; gap:6px}
+.cmp-who{font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; color:var(--ink-3)}
+.cmp.mine .cmp-who{color:var(--gold)}
+.cmp-get{margin-top:auto; padding-top:10px; border-top:1px dashed var(--line-2); font-size:13.5px; font-weight:700; color:var(--esp)}
+.cmp.mine .cmp-get{color:var(--gold-l); border-top-color:var(--dline)}
+.cmp.mine h3 a{color:var(--gold-l); text-decoration:underline; text-decoration-color:var(--gold); text-underline-offset:4px}
+.comp-band{padding:60px 0 64px; background:radial-gradient(120% 80% at 10% 0%,#6E2E38 0%,#4A1C25 55%,#33121A 100%); color:#F6E3E1}
+.comp-band .eyebrow{color:#F1C9A8}
+.comp-band h2{color:#FFF1EC; margin:10px 0 14px}
+.comp-band p{color:rgba(255,236,230,.85)} .comp-band b{color:#FFE2B8}
+.comp-band .inc li{background:rgba(255,255,255,.08); color:#FFF1EC}
+.comp-band .inc .ck{color:#F1C9A8}
+.comp-cta{gap:10px; background:var(--goldfill); color:var(--esp); margin-top:18px; box-shadow:0 14px 34px rgba(0,0,0,.25)}
 /* ---------- переход месяц → год: фото 4 ---------- */
 .bridge{position:relative; background:#1C120C; color:var(--on-dark); overflow:hidden}
 .bridge-img{position:relative; height:clamp(420px,115vw,640px)}
@@ -368,20 +381,6 @@ footer a{color:var(--caramel-d)}
       <h3 class="locks-h">Как этот месяц сыграет в вашей жизни</h3>
       <p class="locks-sub">Даты выше посчитаны по вашей дате рождения. А в какой сфере сработает каждая из них, видно только по времени и месту рождения и только в разрезе года</p>
       <div class="locks" id="locks"></div>
-
-      <div class="comp">
-        <div class="eyebrow">Компенсаторика</div>
-        <h3>Если месяц или сфера напряжённые, это не приговор</h3>
-        <p>В годовом прогнозе я смотрю транзиты по каждой сфере и подбираю компенсаторику: конкретные действия, которые смягчают трудный период. Без волшебства. Например:</p>
-        <ul class="inc">
-          <li><span class="ck">◆</span><span>плановое обследование заранее, если напряжение приходится на здоровье</span></li>
-          <li><span class="ck">◆</span><span>смена формата работы, когда тяжёлая планета проходит по зоне ежедневной работы</span></li>
-          <li><span class="ck">◆</span><span>ремонт или осмотр машины, если напряжение идёт по дому и имуществу</span></li>
-          <li><span class="ck">◆</span><span>аскезы по субботам в периоды Сатурна</span></li>
-        </ul>
-        <p>Какие действия нужны именно вам и в какие месяцы, я подбираю под вашу карту и ваш год</p>
-        <a class="loop-btn js-loop" href="#service">Как получить годовой прогноз <span aria-hidden="true">&#8595;</span></a>
-      </div>
     </div>
   </section>
 
@@ -406,11 +405,11 @@ footer a{color:var(--caramel-d)}
           <h2>Прогноз на 12 месяцев вперёд, <em>с датами</em></h2>
         </div>
       </div>
-      <p>Обычно прогноз на год покупают в одном из двух вариантов. И после обоих остаётся вопрос: <b>а что мне с этим делать и когда?</b></p>
+      <p>Прогноз на год у астрологов бывает трёх видов. Разница в том, что вы в итоге знаете:</p>
       <div class="compare">
-        <div class="cmp base"><h3>Гороскоп по знаку</h3><p>Один текст на миллионы людей вашего знака. Про вас лично в нём ничего</p></div>
-        <div class="cmp base"><h3>Соляр по сферам</h3><p>Показывает, что вероятно в году. Но не говорит когда: в марте или в ноябре</p></div>
-        <div class="cmp mine"><h3>Мой прогноз</h3><p>Соляр и все ключевые транзиты года по вашей карте. Что произойдёт и в какие месяцы: когда действовать, а когда держать ушки на макушке</p></div>
+        <div class="cmp base"><span class="cmp-who">Кто-то делает</span><h3>Гороскоп по знаку</h3><p>Один текст на миллионы людей вашего знака</p><span class="cmp-get">Вы знаете: ничего личного</span></div>
+        <div class="cmp base"><span class="cmp-who">Кто-то делает</span><h3>Только соляр</h3><p>Видно, что вероятно в году, но непонятно когда: в марте или в ноябре</p><span class="cmp-get">Вы знаете: что</span></div>
+        <div class="cmp mine"><span class="cmp-who">Я делаю</span><h3>Соляр + транзиты + <a href="#comp">компенсаторика</a></h3><p>Что произойдёт, в какие месяцы и что с этим делать в трудные периоды</p><span class="cmp-get">Вы знаете: что, когда и как смягчить</span></div>
       </div>
       <h3 class="why-h">Почему я считаю именно так</h3>
       <ul class="inc">
@@ -420,6 +419,22 @@ footer a{color:var(--caramel-d)}
         <li><span class="ck">◆</span><span><b>Говорю человеческим языком и даю, что делать.</b> Не «Сатурн в квадрате», а «в эти недели не берите кредит»</span></li>
       </ul>
       <div class="quote">Пример из моей практики: в соляре видно, что в году есть вероятность серьёзных отношений. Транзиты подсказывают, в какие периоды двери открыты для судьбоносного знакомства, и в какие можно притянуть человека, который потом обманет. Я расписываю это по датам</div>
+    </div>
+  </section>
+
+  <section id="comp" class="comp-band">
+    <div class="wrap">
+      <div class="eyebrow">Компенсаторика</div>
+      <h2>Знать не значит справиться</h2>
+      <p>Прогноз, который только пугает датами, бесполезен. Поэтому к каждому трудному периоду я подбираю <b>компенсаторику</b>: конкретные действия, которые смягчают этот период. Без волшебства. Например:</p>
+      <ul class="inc">
+        <li><span class="ck">◆</span><span>плановое обследование заранее, если напряжение приходится на здоровье</span></li>
+        <li><span class="ck">◆</span><span>смена формата работы, когда тяжёлая планета проходит по зоне ежедневной работы</span></li>
+        <li><span class="ck">◆</span><span>ремонт или осмотр машины, если напряжение идёт по дому и имуществу</span></li>
+        <li><span class="ck">◆</span><span>аскезы по субботам в периоды Сатурна</span></li>
+      </ul>
+      <p>Так трудный месяц превращается в план: вы заранее знаете, что сделать, и проходите его спокойнее. Какие действия нужны именно вам и в какие месяцы, я подбираю под вашу карту и ваш год</p>
+      <a class="cta comp-cta js-loop" href="#service">Как получить годовой прогноз <span aria-hidden="true">&#8595;</span></a>
     </div>
   </section>
 
