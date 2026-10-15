@@ -803,6 +803,29 @@ fillSelect(selYear, new Date().getFullYear(), 1930, null, "Год");
 /* Небо текущего месяца считаем заранее, пока человек выбирает дату: кнопка срабатывает сразу */
 setTimeout(function(){ try{ var cm = currentMonth(); useSky(cm.y, cm.m); }catch(e){} }, 300);
 
+/* Подарок за расчёт: прогноз на год 6 990 вместо 12 000 ровно 24 часа с первого расчёта на этом устройстве */
+var GIFT_KEY = "oksana_god_gift_started", GIFT_MS = 24*3600*1000;
+var MSG_GIFT = "https://t.me/okssmi?text=" + encodeURIComponent("Здравствуйте! Хочу прогноз на год по подарку 6 990");
+var MSG_GOD = "https://t.me/okssmi?text=" + encodeURIComponent("ГОД");
+function startGift(){
+  var started = null;
+  try { started = localStorage.getItem(GIFT_KEY); } catch(e){}
+  var t0 = started ? parseInt(started, 10) : Date.now();
+  if (!started){ try { localStorage.setItem(GIFT_KEY, String(t0)); } catch(e){} }
+  var box = document.getElementById("gift"), clock = document.getElementById("clock"), cta = document.getElementById("ctaYear");
+  if (!box || !clock) return;
+  function tick(){
+    var left = t0 + GIFT_MS - Date.now();
+    if (left <= 0){ box.classList.remove("on"); if (cta){ cta.href = MSG_GOD; cta.textContent = "Написать мне слово ГОД"; } return; }
+    box.classList.add("on");
+    if (cta){ cta.href = MSG_GIFT; cta.textContent = "Забрать прогноз на год за 6 990 ₽"; }
+    var h = Math.floor(left/3600000), m = Math.floor(left%3600000/60000), sec = Math.floor(left%60000/1000);
+    clock.textContent = (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(sec<10?"0":"")+sec;
+    setTimeout(tick, 1000);
+  }
+  tick();
+}
+
 document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
   var err = document.getElementById("err");
@@ -812,6 +835,7 @@ document.getElementById("form").addEventListener("submit", function(e){
   if (test.getDate() !== day || test.getMonth() !== month1-1){ err.classList.add("on"); return; }
   err.classList.remove("on");
   render(day, month1, year);
+  startGift();
   goal("calc_submit");
 });
 

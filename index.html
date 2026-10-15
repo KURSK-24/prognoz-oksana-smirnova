@@ -282,6 +282,22 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .quote:before{content:"“"; position:absolute; top:-12px; left:16px; font-size:70px; line-height:1; color:var(--caramel)}
 
 /* ---------- услуга: фото 3 ---------- */
+.revs{margin:30px 0 26px}
+.revs h3{margin:6px 0 16px}
+.phone{max-width:380px; margin:0 auto; background:#1d1410; border-radius:36px; padding:12px; box-shadow:0 18px 40px rgba(42,28,19,.22)}
+.phone-scr{background:#E9DECF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%23c9b69c'/%3E%3C/svg%3E"); border-radius:26px; padding:18px 12px 14px; overflow:hidden}
+.phone-bar{display:flex; align-items:center; gap:10px; padding:0 4px 14px; border-bottom:1px solid rgba(94,72,56,.15); margin-bottom:14px}
+.phone-bar .av{width:34px; height:34px; border-radius:50%; background:var(--caramelfill); flex:none}
+.phone-bar b{display:block; font-size:14px; color:var(--esp); line-height:1.2}
+.phone-bar span{font-size:12px; color:var(--ink-3)}
+.bub{position:relative; background:#fff; border-radius:16px 16px 16px 4px; padding:10px 12px 8px; margin:0 26px 10px 0; font-size:15px; line-height:1.45; color:#1f1712; box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bub .meta{display:block; text-align:right; font-size:11px; color:#9b8a7a; margin-top:4px}
+.voice{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.voice .play{width:34px; height:34px; border-radius:50%; background:var(--caramel); flex:none; position:relative}
+.voice .play:after{content:""; position:absolute; left:13px; top:10px; border-left:11px solid #fff; border-top:7px solid transparent; border-bottom:7px solid transparent}
+.voice .wave{flex:1; height:22px; background:repeating-linear-gradient(90deg,var(--caramel) 0 2px,transparent 2px 5px); -webkit-mask:linear-gradient(0deg,#000 0 0); opacity:.55; border-radius:2px; clip-path:polygon(0 60%,6% 20%,12% 70%,18% 10%,24% 55%,30% 30%,36% 80%,42% 15%,48% 60%,54% 25%,60% 75%,66% 35%,72% 65%,78% 20%,84% 70%,90% 40%,100% 60%,100% 100%,0 100%)}
+.bub .tr{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--caramel-d); font-weight:600; margin-bottom:4px}
+.revs-note{font-size:12px; color:var(--ink-3); text-align:center; margin-top:12px}
 .service{padding:60px 0 64px; background:var(--cream)}
 .svc{background:#fff; border-radius:28px; overflow:hidden; box-shadow:0 30px 60px rgba(60,36,18,.14)}
 .svc-img{position:relative; height:clamp(380px,105vw,560px)}
@@ -298,6 +314,15 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .cta.main{background:var(--caramelfill); color:#fff; box-shadow:0 14px 34px rgba(142,92,49,.3)}
 .cta-hint{margin:0 0 14px; text-align:center; font-size:14.5px; line-height:1.55}
 .word{font-weight:700; letter-spacing:.14em; color:var(--caramel-d)}
+.gift{display:none; margin:0 0 16px; padding:18px 16px 16px; border-radius:20px; background:var(--esp); color:var(--on-dark); text-align:center; box-shadow:0 14px 30px rgba(42,28,19,.22)}
+.gift.on{display:block}
+.gift .g-h{display:block; font-size:11px; letter-spacing:.28em; text-transform:uppercase; font-weight:600; color:var(--gold); margin-bottom:8px}
+.gift .g-p{font-family:"Cormorant Garamond",Georgia,serif; font-size:34px; font-weight:600; line-height:1.1; color:var(--gold-l)}
+.gift .g-p s{font-size:22px; color:var(--on-dark-3); margin-right:10px; font-weight:500}
+.gift .g-gift{margin:12px 0 0; padding-top:10px; border-top:1px solid var(--dline); font-size:12.5px; line-height:1.5; color:var(--on-dark-3)}
+.gift .g-24{display:inline-block; margin-top:8px; padding:4px 14px; border-radius:999px; background:var(--goldfill); color:var(--esp); font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase}
+.gift .g-t{margin:8px 0 0; font-size:14px; color:var(--on-dark-2)}
+.gift .clock{font-variant-numeric:tabular-nums; letter-spacing:.06em; font-weight:700; color:#fff}
 .later{margin-top:22px; padding:20px 18px; border-radius:20px; border:1px dashed var(--line-2); text-align:center}
 .later b{display:block; font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:600; line-height:1.2; margin-bottom:6px}
 .later p{font-size:14.5px; margin:0 0 14px}
@@ -446,7 +471,7 @@ footer a{color:var(--caramel-d)}
         <div class="svc-in">
           <div class="eyebrow">Индивидуальный прогноз</div>
           <h2>Годовой прогноз по всем сферам с планом действий</h2>
-          <p>Вы увидите, как пройдёт ваш год: где вас ждут возможности, а где ловушки, где действовать, а где стоит подождать. И получите список компенсирующих действий на трудные периоды</p>
+          <p>Вы увидите, как пройдёт ваш год: где вас ждут возможности, а где стоит подстраховаться, где действовать, а где стоит подождать. И получите список компенсирующих действий на трудные периоды</p>
           <p>Ваш год не начинается 1 января, а решения не ждут дня рождения. Я смотрю ваш текущий личный год по соляру и расписываю транзиты на <b>12 месяцев от дня, когда вы обратились</b></p>
 
           <h3>Для кого</h3>
@@ -479,6 +504,17 @@ footer a{color:var(--caramel-d)}
           <p><b>Формат:</b> голосовой разбор на 40-60 минут, в зависимости от картины года, и PDF с важными периодами года</p>
           <div class="quote">Прогноз не про страшилки и программирование. Это не приговор, а карта. Моя задача не предсказывать «сбудется или не сбудется», а дать инструмент: важные периоды и что в них делать. Прогноз - это план действий, а не гадание на кофейной гуще</div>
 
+          <div class="revs">
+            <div class="eyebrow">Отзывы</div>
+            <h3>Что пишут клиентки</h3>
+            <div class="phone"><div class="phone-scr">
+              <div class="phone-bar"><span class="av"></span><div><b>Сообщения клиенток</b><span>имена скрыты</span></div></div>
+              <div class="bub">Ты мне в прогнозе говорила, что большие деньги ожидать в августе. Таунхаус я продала, деньги поступили 01.09 по сделке, причём продала за наличные, без ипотек, слава богу 🌺 Твои прогнозы как всегда точные, точнее не бывает!<span class="meta">прогноз на год</span></div>
+              <div class="bub">Оксана, спасибо за прогноз! Уже третий год заказываю, как-то с ним спокойнее 😅 Можно планировать, морально готовиться к сложным периодам, есть некая определённость) мне помогает<span class="meta">третий год с прогнозом</span></div>
+              <div class="bub"><div class="voice"><span class="play"></span><span class="wave"></span></div><span class="tr">Голосовое, расшифровка</span>Оксана, хотелось очень сильно поблагодарить, потому что второй год обращаюсь за соляром и обучаюсь у вас. Прям очень-очень откликается всё, что вы делаете и что вы говорите. И мой соляр тоже мне очень сильно откликается: и про переезды, и про развитие в работе. Очень интересно посмотреть, как это проиграется. Не знаю, как другие, но именно с вами мне легко, комфортно и очень мне подходит в плане эмоционального настроя. Спасибо огромное!<span class="meta">второй год с соляром</span></div>
+            </div></div>
+            <p class="revs-note">Тексты сообщений без изменений по смыслу, имена клиенток не указываем</p>
+          </div>
           <h3>Как проходит</h3>
           <ol class="steps">
             <li>Нажмите кнопку ниже: откроется моя личка в Telegram, слово ГОД уже будет вписано</li>
@@ -486,6 +522,7 @@ footer a{color:var(--caramel-d)}
             <li>Расскажу про формат, стоимость и срок готовности. После оплаты считаю ваш год</li>
           </ol>
           <p class="cta-hint">Год считаю от дня, когда вы написали. Ждать дня рождения не нужно</p>
+          <div class="gift" id="gift"><span class="g-h">Ваша бонусная цена на годовой прогноз</span><div class="g-p"><s>12 000 ₽</s>6 990 ₽</div><div class="g-24">24 часа</div><p class="g-t">Цена действует 24 часа после вашего расчёта. Осталось: <span class="clock" id="clock">24:00:00</span></p><p class="g-gift">🎁 Подумайте и о подарках к Новому году. По этой цене можно заказать прогноз не только себе, но и родным и близким, а прогноз на 2027 год подарить любимым людям</p></div>
           <a class="cta main js-buy" id="ctaYear" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Написать мне слово ГОД</a>
 
           <div class="later">
