@@ -285,10 +285,20 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 /* ---------- услуга: фото 3 ---------- */
 .revs{margin:30px 0 26px}
 .revs h3{margin:6px 0 16px}
-.rev{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:20px 18px 16px; margin:0 0 14px; box-shadow:0 6px 18px rgba(42,28,19,.06)}
-.rev p{margin:0; font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:21px; line-height:1.42; color:var(--esp)}
-.rev .rev-tag{display:block; margin-top:12px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:600; color:var(--caramel-d)}
-.rev .stars{display:block; color:var(--gold); letter-spacing:.2em; font-size:14px; margin-bottom:8px}
+.phone{max-width:380px; margin:0 auto; background:#1d1410; border-radius:36px; padding:12px; box-shadow:0 18px 40px rgba(42,28,19,.22)}
+.phone-scr{background:#E9DECF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%23c9b69c'/%3E%3C/svg%3E"); border-radius:26px; padding:18px 12px 14px; overflow:hidden}
+.phone-bar{display:flex; align-items:center; gap:10px; padding:0 4px 14px; border-bottom:1px solid rgba(94,72,56,.15); margin-bottom:14px}
+.phone-bar .av{width:34px; height:34px; border-radius:50%; background:var(--caramelfill); flex:none}
+.phone-bar b{display:block; font-size:14px; color:var(--esp); line-height:1.2}
+.phone-bar span{font-size:12px; color:var(--ink-3)}
+.bub{position:relative; background:#fff; border-radius:16px 16px 16px 4px; padding:10px 12px 8px; margin:0 26px 10px 0; font-size:15px; line-height:1.45; color:#1f1712; box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bub .meta{display:block; text-align:right; font-size:11px; color:#9b8a7a; margin-top:4px}
+.voice{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+.voice .play{width:34px; height:34px; border-radius:50%; background:var(--caramel); flex:none; position:relative}
+.voice .play:after{content:""; position:absolute; left:13px; top:10px; border-left:11px solid #fff; border-top:7px solid transparent; border-bottom:7px solid transparent}
+.voice .wave{flex:1; height:22px; background:repeating-linear-gradient(90deg,var(--caramel) 0 2px,transparent 2px 5px); -webkit-mask:linear-gradient(0deg,#000 0 0); opacity:.55; border-radius:2px; clip-path:polygon(0 60%,6% 20%,12% 70%,18% 10%,24% 55%,30% 30%,36% 80%,42% 15%,48% 60%,54% 25%,60% 75%,66% 35%,72% 65%,78% 20%,84% 70%,90% 40%,100% 60%,100% 100%,0 100%)}
+.bub .tr{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--caramel-d); font-weight:600; margin-bottom:4px}
+.revs-note{font-size:12px; color:var(--ink-3); text-align:center; margin-top:12px}
 .service{padding:60px 0 64px; background:var(--cream)}
 .svc{background:#fff; border-radius:28px; overflow:hidden; box-shadow:0 30px 60px rgba(60,36,18,.14)}
 .svc-img{position:relative; height:clamp(380px,105vw,560px)}
@@ -489,9 +499,13 @@ footer a{color:var(--caramel-d)}
           <div class="revs">
             <div class="eyebrow">Отзывы</div>
             <h3>Что пишут клиентки</h3>
-            <div class="rev"><span class="stars">◆ ◆ ◆ ◆ ◆</span><p>«Ты мне в прогнозе говорила, что большие деньги ожидать в августе. Таунхаус я продала, деньги поступили 01.09 по сделке, причём продала за наличные, без ипотек, слава богу 🌺 Твои прогнозы как всегда точные, точнее не бывает!»</p><span class="rev-tag">Клиентка, прогноз на год</span></div>
-            <div class="rev"><span class="stars">◆ ◆ ◆ ◆ ◆</span><p>«Уже третий год заказываю, как-то с ним спокойнее 😅 Можно планировать, морально готовиться к сложным периодам, есть некая определённость. Мне помогает»</p><span class="rev-tag">Клиентка, третий год с прогнозом</span></div>
-            <div class="rev"><span class="stars">◆ ◆ ◆ ◆ ◆</span><p>«Не знаю, как другие, но именно с вами мне легко, комфортно и очень мне подходит в плане эмоционального настроя»</p><span class="rev-tag">Клиентка, второй год берёт соляр</span></div>
+            <div class="phone"><div class="phone-scr">
+              <div class="phone-bar"><span class="av"></span><div><b>Сообщения клиенток</b><span>имена скрыты</span></div></div>
+              <div class="bub">Ты мне в прогнозе говорила, что большие деньги ожидать в августе. Таунхаус я продала, деньги поступили 01.09 по сделке, причём продала за наличные, без ипотек, слава богу 🌺 Твои прогнозы как всегда точные, точнее не бывает!<span class="meta">прогноз на год</span></div>
+              <div class="bub">Оксана, спасибо за прогноз! Уже третий год заказываю, как-то с ним спокойнее 😅 Можно планировать, морально готовиться к сложным периодам, есть некая определённость) мне помогает<span class="meta">третий год с прогнозом</span></div>
+              <div class="bub"><div class="voice"><span class="play"></span><span class="wave"></span></div><span class="tr">Голосовое, расшифровка</span>Оксана, хотелось очень сильно поблагодарить, потому что второй год обращаюсь за соляром и обучаюсь у вас. Прям очень-очень откликается всё, что вы делаете и что вы говорите. И мой соляр тоже мне очень сильно откликается: и про переезды, и про развитие в работе. Очень интересно посмотреть, как это проиграется. Не знаю, как другие, но именно с вами мне легко, комфортно и очень мне подходит в плане эмоционального настроя. Спасибо огромное!<span class="meta">второй год с соляром</span></div>
+            </div></div>
+            <p class="revs-note">Тексты сообщений без изменений по смыслу, имена клиенток не указываем</p>
           </div>
           <h3>Как проходит</h3>
           <ol class="steps">
