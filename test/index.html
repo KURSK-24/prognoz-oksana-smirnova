@@ -315,6 +315,13 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .cta.main{background:var(--caramelfill); color:#fff; box-shadow:0 14px 34px rgba(142,92,49,.3)}
 .cta-hint{margin:0 0 14px; text-align:center; font-size:14.5px; line-height:1.55}
 .word{font-weight:700; letter-spacing:.14em; color:var(--caramel-d)}
+.gift{display:none; margin:0 0 16px; padding:18px 16px 16px; border-radius:20px; background:var(--esp); color:var(--on-dark); text-align:center; box-shadow:0 14px 30px rgba(42,28,19,.22)}
+.gift.on{display:block}
+.gift .g-h{display:block; font-size:11px; letter-spacing:.28em; text-transform:uppercase; font-weight:600; color:var(--gold); margin-bottom:8px}
+.gift .g-p{font-family:"Cormorant Garamond",Georgia,serif; font-size:34px; font-weight:600; line-height:1.1; color:var(--gold-l)}
+.gift .g-p s{font-size:22px; color:var(--on-dark-3); margin-left:8px; font-weight:500}
+.gift .g-t{margin:8px 0 0; font-size:14px; color:var(--on-dark-2)}
+.gift .clock{font-variant-numeric:tabular-nums; letter-spacing:.06em; font-weight:700; color:#fff}
 .later{margin-top:22px; padding:20px 18px; border-radius:20px; border:1px dashed var(--line-2); text-align:center}
 .later b{display:block; font-family:"Cormorant Garamond",serif; font-size:24px; font-weight:600; line-height:1.2; margin-bottom:6px}
 .later p{font-size:14.5px; margin:0 0 14px}
@@ -514,6 +521,7 @@ footer a{color:var(--caramel-d)}
             <li>Расскажу про формат, стоимость и срок готовности. После оплаты считаю ваш год</li>
           </ol>
           <p class="cta-hint">Год считаю от дня, когда вы написали. Ждать дня рождения не нужно</p>
+          <div class="gift" id="gift"><span class="g-h">🎁 Подарок за ваш расчёт</span><div class="g-p">6 990 ₽<s>12 000 ₽</s></div><p class="g-t">Прогноз на год по цене подарка ещё <span class="clock" id="clock">24:00:00</span></p></div>
           <a class="cta main js-buy" id="ctaYear" href="https://t.me/okssmi?text=%D0%93%D0%9E%D0%94" target="_blank" rel="noopener">Написать мне слово ГОД</a>
 
           <div class="later">
