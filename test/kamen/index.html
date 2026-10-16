@@ -411,6 +411,11 @@ footer a{color:var(--caramel-d)}
 .k-bone:nth-child(1){transform:rotate(-8deg)} .k-bone:nth-child(2){transform:rotate(6deg) translateY(4px)} .k-bone:nth-child(3){transform:rotate(-3deg)}
 .k-bone:nth-child(4){transform:rotate(9deg) translateY(3px)} .k-bone:nth-child(5){transform:rotate(-6deg)}
 .k-throw-wrap{max-width:420px; margin:22px auto 0}
+.k-links{margin-top:30px; padding:24px 20px; border-radius:20px; background:#2A1C13; color:#EADBC2}
+.k-links .locks-h{color:#F1DDB4; margin:0 0 12px}
+.k-links p{margin:0 0 12px; color:rgba(234,219,194,.86)}
+.k-order{display:block; margin-top:16px; padding:15px 18px; border-radius:14px; background:linear-gradient(120deg,#F1DDB4,#D9B67A 45%,#C29A5E); color:#2A1C13; font-weight:700; text-align:center; text-decoration:none}
+
 @media (prefers-reduced-motion:reduce){.k-bone.roll,.k-twist.on{animation:none}}
 </style>
 </head>
@@ -513,9 +518,13 @@ footer a{color:var(--caramel-d)}
       <h2 id="monthTitle">Ваш месяц</h2>
       <div id="month"></div>
 
-      <h3 class="locks-h">А что с остальными сферами</h3>
-      <p class="locks-sub">Даты выше посчитаны по вашей дате рождения. Что они значат именно для вас, в деньгах, отношениях или работе, видно только по времени и месту рождения</p>
-      <div class="locks" id="locks"></div>
+      <div class="k-links">
+        <h3 class="locks-h">Деньги не живут сами по себе</h3>
+        <p>На деньги всегда влияют другие сферы жизни. Работа и начальник. Партнёр и общий бюджет. Здоровье и силы, без которых не взяться за новое. Даже переезд или рождение ребёнка меняют весь денежный год</p>
+        <p>Поэтому в прогнозе на год я смотрю деньги вместе со всеми сферами: где поддержка, где проверка, и как одно тянет за собой другое. И на каждый трудный период подбираю компенсаторику</p>
+        <a class="k-order" href="#service">Как заказать прогноз на год <span aria-hidden="true">&#8595;</span></a>
+      </div>
+      <div class="locks" id="locks" style="display:none!important"></div>
     </div>
   </section>
 
