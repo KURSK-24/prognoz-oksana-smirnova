@@ -373,12 +373,10 @@ footer a{color:var(--caramel-d)}
 .k-bones-photo p{margin:0; font-size:14px; color:rgba(234,219,194,.8)}
 .k-rule{display:flex; align-items:center; gap:12px; color:#B89A6A; font-family:"Cormorant Garamond",serif; font-size:18px; letter-spacing:.3em; margin:6px 0 22px}
 .k-rule:before,.k-rule:after{content:""; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(217,182,122,.5),transparent)}
-.k-stele{position:relative; margin:0 auto; max-width:420px; background:url("stone.png") center/100% 100% no-repeat; padding:54px 13% 48px; text-align:center; filter:drop-shadow(0 22px 30px rgba(0,0,0,.55))}
-.k-stele:before{content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 40%,transparent 40%,rgba(60,40,20,.25)); pointer-events:none}
+.k-stele{position:relative; margin:0 auto; max-width:420px; background:url("stone.png") center/100% 100% no-repeat; padding:54px 13% 48px; text-align:center; filter:drop-shadow(0 18px 18px rgba(60,38,18,.45)) drop-shadow(0 4px 4px rgba(60,38,18,.3))}
 .k-greek{font-family:"Cormorant Garamond",serif; letter-spacing:.28em; color:rgba(70,52,34,.55); font-size:14px; text-shadow:0 1px 0 rgba(255,255,255,.35); margin-bottom:4px; position:relative}
 .k-lang{display:block; font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(70,52,34,.75); font-weight:700; margin-bottom:16px; position:relative}
-.k-bones{display:flex; justify-content:center; gap:6px; margin:0 0 14px; min-height:70px; position:relative}
-.k-bone{width:40px; height:58px; border-radius:20px 20px 24px 24px / 28px 28px 24px 24px; background:linear-gradient(160deg,#FFFBF2,#EBDAB8); box-shadow:inset 0 -5px 9px rgba(110,80,40,.3), inset 0 2px 2px #fff, 0 5px 10px rgba(20,12,6,.5); display:flex; align-items:center; justify-content:center; font-family:"Cormorant Garamond",serif; font-weight:700; font-size:30px; color:#7A2410}
+.k-bones{display:flex; justify-content:center; gap:4px; margin:4px 0 16px; min-height:70px; position:relative}
 .k-bone.roll{animation:kroll .7s ease-out both}
 @keyframes kroll{0%{transform:translateY(-46px) rotate(-210deg); opacity:.1} 70%{transform:translateY(3px) rotate(8deg); opacity:1} 100%{transform:none}}
 .k-sum{display:inline-block; padding:4px 12px; border-radius:20px; background:rgba(40,25,12,.72); font-size:12px; letter-spacing:.24em; text-transform:uppercase; color:#F6E3B8; font-weight:700; min-height:18px; position:relative}
@@ -386,7 +384,7 @@ footer a{color:var(--caramel-d)}
 .k-answer .k-god{font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; color:#8A2A12; font-weight:800; margin-bottom:8px}
 .k-answer p{margin:0; font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:600; font-size:22px; line-height:1.3; color:#2A1408; text-shadow:none}
 .k-answer .k-hint{font-family:Montserrat,sans-serif; font-style:normal; font-weight:600; font-size:14px; color:#4A2E16; text-shadow:none}
-.k-throw{appearance:none; border:1px solid rgba(255,230,190,.35); cursor:pointer; width:100%; padding:16px 18px; border-radius:6px; background:linear-gradient(180deg,#5a3c25,#3a2717); color:#F1DDB4; font:700 14px Montserrat,sans-serif; letter-spacing:.2em; text-transform:uppercase; box-shadow:0 8px 18px rgba(0,0,0,.35); position:relative}
+.k-throw{appearance:none; border:1px solid rgba(255,230,190,.35); cursor:pointer; width:100%; padding:18px 18px; border-radius:6px; background:linear-gradient(180deg,#5a3c25,#3a2717); color:#F1DDB4; font:700 14px Montserrat,sans-serif; letter-spacing:.2em; text-transform:uppercase; box-shadow:0 8px 18px rgba(0,0,0,.35); position:relative}
 .k-throw:active{transform:translateY(1px)}
 .k-twist{display:none; margin:34px 0 0; padding:26px 20px 24px; border:1px solid rgba(217,182,122,.3); border-radius:6px; text-align:center; background:rgba(255,240,210,.04)}
 .k-twist.on{display:block; animation:kfade .6s ease-out}
@@ -398,6 +396,21 @@ footer a{color:var(--caramel-d)}
 .k-go{display:block; padding:16px 18px; border-radius:6px; background:linear-gradient(120deg,#F1DDB4,#D9B67A 45%,#C29A5E); color:#2A1C13; font-weight:700; text-decoration:none; letter-spacing:.04em}
 .k-src{padding:26px 0 30px; font-size:12px; color:rgba(234,219,194,.5); text-align:center}
 .k-src a{color:rgba(241,221,180,.75)}
+
+.k-light{position:relative; padding:34px 0 40px; color:#3B2412;
+  background:radial-gradient(ellipse at 50% 35%,#FBF3E2 0%,#F1E4CB 55%,#E6D3B0 100%)}
+.k-light:before{content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background:repeating-radial-gradient(circle at 30% 40%,rgba(120,80,30,.04) 0 1px,transparent 1px 4px)}
+.k-light .k-rule{color:#8E5C31}
+.k-light .k-rule:before,.k-light .k-rule:after{background:linear-gradient(90deg,transparent,rgba(142,92,49,.5),transparent)}
+.k-light .k-twist{background:#2A1C13; border:0; box-shadow:0 16px 30px rgba(42,28,19,.3)}
+/* кости-астрагалы неровной формы */
+.k-bone{position:relative; width:44px; height:60px; display:flex; align-items:center; justify-content:center}
+.k-bone svg{position:absolute; inset:0; width:100%; height:100%; filter:drop-shadow(0 4px 4px rgba(20,12,6,.45))}
+.k-bone b{position:relative; font-family:"Cormorant Garamond",serif; font-weight:700; font-size:28px; color:#7A2410; text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.k-bone:nth-child(1){transform:rotate(-8deg)} .k-bone:nth-child(2){transform:rotate(6deg) translateY(4px)} .k-bone:nth-child(3){transform:rotate(-3deg)}
+.k-bone:nth-child(4){transform:rotate(9deg) translateY(3px)} .k-bone:nth-child(5){transform:rotate(-6deg)}
+.k-throw-wrap{max-width:420px; margin:22px auto 0}
 @media (prefers-reduced-motion:reduce){.k-bone.roll,.k-twist.on{animation:none}}
 </style>
 </head>
@@ -422,15 +435,19 @@ footer a{color:var(--caramel-d)}
         <p>Гадали так: брали пять косточек, бросали к подножию камня и смотрели, какими гранями они легли. У каждой косточки четыре грани: 1, 3, 4 и 6. По комбинации находили свою строку и своего бога</p>
       </div>
     </div>
+  </div>
+</section>
+<section class="k-light">
+  <div class="k-wrap">
     <div class="k-rule">ΧΡΗΣΜΟΣ</div>
     <div class="k-stele">
       <div class="k-greek">ΖΕΥΣ · ΤΥΧΗ · ΕΡΜΗΣ · ΑΘΗΝΑ</div>
       <span class="k-lang">Ответы в переводе с древнегреческого</span>
-      <div class="k-bones" id="kBones"><div class="k-bone">?</div><div class="k-bone">?</div><div class="k-bone">?</div><div class="k-bone">?</div><div class="k-bone">?</div></div>
+      <div class="k-bones" id="kBones"><div class="k-bone"><svg viewBox="0 0 44 60" aria-hidden="true"><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="#EBDAB8" stroke="#A9865A" stroke-width="1"/></svg><b>?</b></div><div class="k-bone"><svg viewBox="0 0 44 60" aria-hidden="true"><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="#EBDAB8" stroke="#A9865A" stroke-width="1"/></svg><b>?</b></div><div class="k-bone"><svg viewBox="0 0 44 60" aria-hidden="true"><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="#EBDAB8" stroke="#A9865A" stroke-width="1"/></svg><b>?</b></div><div class="k-bone"><svg viewBox="0 0 44 60" aria-hidden="true"><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="#EBDAB8" stroke="#A9865A" stroke-width="1"/></svg><b>?</b></div><div class="k-bone"><svg viewBox="0 0 44 60" aria-hidden="true"><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="#EBDAB8" stroke="#A9865A" stroke-width="1"/></svg><b>?</b></div></div>
       <div class="k-sum" id="kSum">&nbsp;</div>
       <div class="k-answer" id="kAnswer"><p class="k-hint">Загадайте вопрос про деньги, дорогу или будущее и бросьте кости</p></div>
-      <button class="k-throw" id="kThrow" type="button">Бросить кости</button>
     </div>
+    <div class="k-throw-wrap"><button class="k-throw" id="kThrow" type="button">Бросить кости</button></div>
     <div class="k-twist" id="kTwist">
       <h2>Камень ответил</h2>
       <p>Так древние искали ответ на свой вопрос. Но самые важные решения о деньгах, урожае и власти в древнем мире сверяли со звёздами. Астрологи Вавилона веками записывали движение планет, чтобы знать, когда начинать большие дела</p>
@@ -646,7 +663,7 @@ footer a{color:var(--caramel-d)}
   function rnd(){ var a=new Uint32Array(1); (window.crypto||window.msCrypto).getRandomValues(a); return FACES[a[0]%4]; }
   document.getElementById("kThrow").addEventListener("click",function(){
     var vals=[],sum=0,html="";
-    for(var i=0;i<5;i++){ var v=rnd(); vals.push(v); sum+=v; html+='<div class="k-bone roll" style="animation-delay:'+(i*70)+'ms">'+v+'</div>'; }
+    for(var i=0;i<5;i++){ var v=rnd(); vals.push(v); sum+=v; html+='<div class="k-bone"><div class="k-bone roll" style="animation-delay:'+(i*70)+'ms;width:100%;height:100%"><svg viewBox="0 0 44 60" aria-hidden="true"><defs><radialGradient id="bg'+i+'" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#FFFBF1"/><stop offset=".6" stop-color="#EBD7B0"/><stop offset="1" stop-color="#C9A877"/></radialGradient></defs><path d="M13 3C6 4 3 11 6 17c2 5 1 8-2 12-3 6-2 16 4 22 5 5 16 7 24 4 8-3 11-11 8-18-2-5-1-8 2-12 4-7 1-16-6-21-6-4-15-4-23-1z" fill="url(#bg'+i+')" stroke="#A9865A" stroke-width="1"/><path d="M15 20c4 3 10 3 14 0M16 40c4-3 9-3 13 0" fill="none" stroke="#B4925F" stroke-width="1.2" opacity=".6"/></svg><b>'+v+'</b></div></div>'; }
     bonesEl.innerHTML=html;
     var o=ORACLE[vals.slice().sort().join("")];
     setTimeout(function(){
