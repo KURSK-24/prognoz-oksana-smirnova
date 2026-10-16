@@ -391,7 +391,7 @@ function eventText(e, nat){
   return {head:s, body:body};
 }
 
-function buildSphere(sp, evs, nat, r, month){
+function buildSphere(sp, evs, nat, r, month, compact){
   var mine = evs.filter(function(e){ return e.sphere === sp.key; });
   mine.sort(function(a,b){ return b.w - a.w; });
   /* одна планета неба с одним характером = один текст, повторы не показываем */
@@ -417,13 +417,15 @@ function buildSphere(sp, evs, nat, r, month){
     var extra = (e.win && e.peak ? '<span class="pm">Пик '+e.day+' '+MONTHS_GEN[e.month]+'</span>' : '') +
                 (e.retro && RETRO_NOTE[e.T] ? '<span class="pm">'+RETRO_NOTE[e.T]+'</span>' : '');
     rows.push({key: e.win ? (e.whole ? 0 : e.win[0]) : e.day, d: periodLabel(e, month), main: e===mainEv,
-               t: rowText(human(sp, e), extra, tx.head), n:e.nature});
+               t: rowText(human(sp, e), extra, tx.head), n:e.nature, w:e.w});
     if (!e.win) taken.push(e.day);
   }
+  if (compact){ rows.sort(function(x,y){ return (y.w||0) - (x.w||0); }); rows = rows.slice(0,3); }
   var easyAng = (sp.moonTo==="venus"||sp.moonTo==="jupiter") ? [0,60,120] : [60,120];
   var dEasy = pickSpaced(moonDays(nat[sp.moonTo], r, easyAng), 2, taken);
   var dHard = pickSpaced(moonDays(nat[sp.moonTo], r, [90,180]), 2, taken);
   var mt = PL[sp.moonTo].ins;
+  if (compact){ dEasy = []; dHard = []; }
   for (var a=0;a<dEasy.length;a++) rows.push({key:dEasy[a], d:dlabel(dEasy[a], month), t:rowText(sp.moonEasy[a], '', 'Луна в гармонии '+mt), n:"soft"});
   for (var b=0;b<dHard.length;b++) rows.push({key:dHard[b], d:dlabel(dHard[b], month), t:rowText(sp.moonHard[b], '', 'Луна в напряжении '+mt), n:"hard"});
   rows.sort(function(x,y){ return x.key - y.key; });
@@ -440,6 +442,7 @@ function buildSphere(sp, evs, nat, r, month){
   html += '</div>';
   /* открытая петля: месяц и одна сфера → год по всем сферам, без цены */
   /* своя концовка у каждой сферы: месяц не даёт общей картины, планировать можно только по году */
+  if (compact){ html += '</article>'; return html; }
   var L = sp.loop;
   html += '<div class="loop"><p class="lp-h">'+L.h.replace("{m}", MONTHS_NOM[month])+'</p>';
   html += '<p>'+L.t+'</p>';
@@ -782,7 +785,7 @@ function render(day, month1, year){
   if (MONEY_ONLY){
     var spM = null; for (var q=0;q<SPHERES.length;q++) if (SPHERES[q].key==="money") spM = SPHERES[q];
     document.getElementById("monthTitle").textContent = "Ваши деньги в " + MONTHS_PREP[mo];
-    document.getElementById("month").innerHTML = buildSphere(spM, evs, nat, r, mo);
+    document.getElementById("month").innerHTML = buildSphere(spM, evs, nat, r, mo, window.FORCE_MONEY === true);
     var lk = document.querySelectorAll("#locks .lock");
     if (lk.length) lk[0].style.display = "none";
   }
