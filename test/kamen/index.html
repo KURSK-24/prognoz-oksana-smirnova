@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Камень из Кибиры</title>
+<meta name="description" content="Бросьте пять косточек, как 1800 лет назад в древней Кибире, и получите ответ камня">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EEE3; --paper:#FCF8F2; --sand:#E6D4BA; --stone:#CDBFA9; --stone-d:#A8977D; --stone-l:#E2D7C4;
+  --caramel:#B87F4C; --caramel-d:#8E5C31; --gold:#D9B67A; --gold-l:#F1DDB4;
+  --esp:#2A1C13; --ink-2:#5E4838; --ink-3:#8C7562; --line:rgba(94,72,56,.16);
+  --caramelfill:linear-gradient(120deg,#C88E58 0%,#A86F3E 60%,#8E5C31 100%);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--cream); color:var(--esp); font-family:Montserrat,-apple-system,"Segoe UI",Roboto,sans-serif; font-size:16px; line-height:1.6; overflow-x:hidden}
+.wrap{max-width:560px; margin:0 auto; padding:28px 16px 48px}
+.eyebrow{font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--caramel-d); font-weight:600; text-align:center}
+h1{font-family:"Cormorant Garamond",Georgia,serif; font-weight:600; font-size:clamp(38px,10vw,54px); line-height:1.02; text-align:center; margin:10px 0 14px}
+.lead{text-align:center; color:var(--ink-2); margin:0 0 26px}
+.stele{position:relative; background:linear-gradient(180deg,var(--stone-l),var(--stone) 60%,var(--stone-d)); border-radius:120px 120px 18px 18px; padding:46px 22px 26px; box-shadow:inset 0 2px 0 rgba(255,255,255,.5), inset 0 -10px 30px rgba(60,40,20,.18), 0 18px 40px rgba(42,28,19,.18); text-align:center}
+.stele:before{content:""; position:absolute; inset:0; border-radius:inherit; background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 3px,transparent 3px 9px),radial-gradient(circle at 30% 20%,rgba(255,255,255,.25),transparent 40%); pointer-events:none}
+.glyphs{font-family:"Cormorant Garamond",serif; letter-spacing:.35em; color:rgba(80,60,40,.45); font-size:15px; margin-bottom:18px; user-select:none}
+.bones{display:flex; justify-content:center; gap:10px; margin:6px 0 20px; min-height:74px}
+.bone{width:50px; height:70px; border-radius:22px 22px 26px 26px / 30px 30px 26px 26px; background:linear-gradient(160deg,#FFF9EE,#EADBC2); box-shadow:inset 0 -4px 8px rgba(120,90,50,.25), 0 4px 10px rgba(42,28,19,.2); display:flex; align-items:center; justify-content:center; font-family:"Cormorant Garamond",serif; font-weight:600; font-size:30px; color:var(--caramel-d)}
+.bone.roll{animation:roll .7s ease-out}
+@keyframes roll{0%{transform:translateY(-40px) rotate(-200deg); opacity:.2} 70%{transform:translateY(4px) rotate(10deg); opacity:1} 100%{transform:none}}
+.sum{font-size:13px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-2); font-weight:600; min-height:20px}
+.answer{background:rgba(252,248,242,.7); border-radius:16px; padding:18px 16px; margin:14px 0 18px; min-height:110px; display:flex; flex-direction:column; justify-content:center}
+.answer .god{font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--caramel-d); font-weight:700; margin-bottom:6px}
+.answer p{margin:0; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:24px; line-height:1.3; color:var(--esp)}
+.answer .hint{font-family:Montserrat,sans-serif; font-style:normal; font-size:14px; color:var(--ink-3)}
+button.throw{appearance:none; border:0; cursor:pointer; width:100%; padding:17px 20px; border-radius:16px; background:var(--caramelfill); color:#fff; font:700 15px Montserrat,sans-serif; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 10px 24px rgba(142,92,49,.32)}
+button.throw:active{transform:translateY(1px)}
+.twist{display:none; margin-top:24px; background:var(--esp); color:var(--cream); border-radius:22px; padding:24px 20px; text-align:center}
+.twist.on{display:block; animation:fade .5s ease-out}
+@keyframes fade{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+.twist h2{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:30px; line-height:1.1; margin:0 0 10px; color:var(--gold-l)}
+.twist p{margin:0 0 16px; color:rgba(246,238,227,.82)}
+.twist a{display:block; padding:16px 18px; border-radius:16px; background:linear-gradient(120deg,#F1DDB4,#D9B67A 45%,#C29A5E); color:var(--esp); font-weight:700; text-decoration:none; letter-spacing:.06em}
+.about{margin-top:28px; font-size:13px; color:var(--ink-3); text-align:center}
+.about a{color:var(--caramel-d)}
+@media (prefers-reduced-motion:reduce){.bone.roll,.twist.on{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Находка октября 2026</div>
+  <h1>Камень из Кибиры</h1>
+  <p class="lead">1800 лет назад на площади древнего города люди бросали пять косточек и искали свой ответ на камне. Камень нашли в 2024 году, а его надписи учёные перевели только сейчас. Загадайте вопрос про деньги, дорогу или будущее и бросьте</p>
+
+  <div class="stele">
+    <div class="glyphs">ΖΕΥΣ · ΤΥΧΗ · ΕΡΜΗΣ · ΑΘΗΝΑ</div>
+    <div class="bones" id="bones">
+      <div class="bone">?</div><div class="bone">?</div><div class="bone">?</div><div class="bone">?</div><div class="bone">?</div>
+    </div>
+    <div class="sum" id="sum">&nbsp;</div>
+    <div class="answer" id="answer"><p class="hint">Подумайте о своём вопросе и нажмите кнопку</p></div>
+    <button class="throw" id="throw">Бросить кости</button>
+  </div>
+
+  <div class="twist" id="twist">
+    <h2>Кости дают случай</h2>
+    <p id="twistText">Бросьте ещё раз, и ответ, скорее всего, будет другим 😉 А планеты движутся по точным законам, и ваш денежный прогноз от броска не меняется. Введите дату рождения и посмотрите, что планеты говорят о ваших деньгах в этом месяце</p>
+    <a id="calc" href="../?sfera=dengi&amp;utm_source=kamen">Мои деньги в этом месяце по планетам</a>
+  </div>
+
+  <p class="about">Игра по мотивам находки в Кибире (Турция): каменная стела II-III века с 56 предсказаниями, на ней гадали пятью косточками с гранями 1, 3, 4 и 6 (<a href="https://moya-planeta.ru/news/view/v_turtsii_nashli_1800letnie_instruktsii_po_gadaniyu" target="_blank" rel="noopener">новость</a>). Механика и ответы как на камне: русский пересказ по английскому переводу учёных (Kileci, Tüner Önen, Özüdoğru, журнал Gephyra, том 31, 2026). Часть из 56 строк утрачена<br><br>Оксана Смирнова · финансовый астролог · <a href="https://t.me/okssmi2" target="_blank" rel="noopener">канал в Telegram</a></p>
+</div>
+<script>
+(function(){
+  var FACES=[1,3,4,6];
+  var ORACLE={"11111": ["Зевс Олимпийский", "Зевс вложит тебе в ум добрый совет, странник. Он дарует радость твоим делам, и ты возрадуешься. Только умилостивь Афродиту и Гермеса"], "11113": ["Афина Воительница", "Уйдя от вражды и зла, ты получишь свою награду. Желание исполнится так, как хочет твоё сердце"], "11114": ["Мойры, богини судьбы", "Не продолжай начатое дело, так не будет лучше. Тому, кто бьётся, сейчас трудно. Но если хочешь увидеть того, кто давно на чужбине, вреда не будет"], "11133": ["Орёл Зевса", "С помощью всевышнего Зевса ты преуспеешь в начатом деле. И ничего не бойся"], "11116": ["Великий Даймон", "Исполни обет, который дал, это будет намного лучше. Деметра и Зевс станут твоими спасителями"], "11134": ["Тюхе Хранительница", "Не решайся сейчас на задуманное дело. Но боги положат конец боли, и вреда не будет"], "11333": ["Ника, богиня победы", "Ты победишь и получишь желаемое, всё будет твоим. Ты одолеешь врагов, и желание исполнится так, как хочет твоё сердце"], "11144": ["Ника Радостная", "Доведи своё дело до конца, так будет намного лучше. Боги поднимут больного с постели, а тот, кто на чужбине, вернётся"], "11334": ["Асклепий, целитель", "Зима помешает твоей работе, но это к твоему благу. Бог спасёт страждущего, а далёкого вернёт домой целым и невредимым"], "11344": ["Оры, богини времени", "Бог пока не позволяет, подожди! Сейчас опасно вступать в спор, борьбу и тяжбу"], "13334": ["Посейдон", "Ты идёшь против волн и ищешь рыбу в море. Не торопись с делом, нет пользы торопить богов раньше времени"], "11336": ["Даймон", "Не думай о страшном. Ты слишком много думаешь, а пользы от этого нет"], "11444": ["Добрый Даймон", "Даймон поведёт тебя по выбранному пути, а смехолюбивая Афродита приведёт к добру. Иди со своей прибылью навстречу беспечальной судьбе"], "13344": ["Зевс Спаситель", "Иди и смело делай задуманное. Принимайся за работу! Не сомневайся и не бойся, вреда тебе не будет"], "11166": ["Зевс Аммон", "Смело иди по пути, по которому зовёт сердце. Бог даст тебе всё к твоему благу, и ты преуспеешь во всём"], "33333": ["Тюхе Спасительница", "У женщины после родов пропало молоко, а потом пришло снова, и в избытке. Так и ты получишь плоды того, о чём спрашиваешь"], "11346": ["Зевс Гостеприимный", "Не спеши с делом, ещё не время. Но боги спасут больного, и тот, кто на чужбине, вернётся"], "13336": ["Геракл", "Я ещё не вижу нужного времени, даже если ты спешишь. Не трудись впустую. Решай спокойно, и бог поведёт тебя"], "11446": ["Арес", "Зачем спешишь? Успокойся, ещё не время. Если подождёшь, нужное время придёт, и ты преуспеешь во всём"], "33334": ["Кронос, бог времени", "На дороге скорпионы, не спеши с задуманным. Подожди, желаемое случится позже. Сейчас лучше не покупать и не продавать"], "13444": ["Аполлон Дельфийский", "Не спеши! Ещё не время. Но потом ты сделаешь всё по своему разумению. Не торопись ни покупать, ни продавать"], "14444": ["Немесида", "Больше не изнуряй себя. Ты без помех получишь всё, чего желаешь"], "11466": ["Адрастея", "Берись за дело, нужное время придёт. Начало трудное, и опасность рядом, но в остальных замыслах всё выйдет хорошо"], "13446": ["Зевс Громовержец", "Действуя как хочется, своих планов не достигнешь. Ехать в чужие края невыгодно, и покупка выгоды не принесёт"], "33444": ["Даймон Покровитель", "Пока не вижу для тебя надёжного пути. Но подожди, успех придёт позже. А сейчас будь спокоен и надейся"], "33336": ["Добрый Кронос", "Не спеши, Даймон против. Подожди и реши спокойно, и для тебя свершится приятное"], "13366": ["Элпис, Добрая Надежда", "Всё, о чём ты спрашиваешь, благополучно и надёжно. Не бойся. Горькая печаль закончится, и подозрения рассеются"], "14446": ["Зевс, хранитель достатка", "Смело принимайся за дело, этот ответ полон надежды. Больной исцелится, а то, что тебе нужно, ты вернёшь"], "34444": ["Гермес, приносящий прибыль", "Зевс вложит тебе в ум добрый совет. Всё будет хорошо, ты достигнешь желаемого, и зло тебя не коснётся"], "33346": ["Ника, богиня победы", "Тебе выпал хороший ответ, странник. Делай всё, что хочешь, бог тебе помощник. Ты победишь, соберёшь плоды и преуспеешь во всём"], "44444": ["Неумолимые Мойры", "Солнце село, и пришла ночь. Всё померкло, оставь то, о чём спрашиваешь. Сейчас лучше не покупать и не продавать"], "13466": ["Селена, богиня Луны", "Не делай того, за что сейчас берёшься. Боги спасут больного, а если в тебе есть страх, вреда не будет"], "33446": ["Диоскуры Хранители", "Тот, кто спешит, не получит того, что назначено временем"], "33366": ["Тюхе, ведущая к прекрасному", "Ты избежишь тяжёлой болезни и всё одолеешь. А тот, кто скитается на чужбине, вернётся"], "13666": ["Мойры Явленные", "Не клади руку в пасть волку. Дело, которое ты держишь в тайне, трудное и ненадёжное. Затаись, не путешествуй и не покупай"], "44446": ["Посейдон", "Бросать семена в море и писать письма одинаково пустой труд. Не принуждай бога, ты всего лишь смертный"], "33466": ["Арес Неистовый", "Не иди задуманным путём, странник, по нему никто не ходит. Туда вошёл огромный лев. Затихни и жди"], "14666": ["Афина", "Почитай Афину, и всё будет твоим, что пожелаешь. Всё задуманное исполнится"], "34466": ["Евфросина, богиня радости", "Иди, куда зовёт сердце, и ты вернёшься домой. Ты всё одолеешь. Даже покупать и продавать сейчас в радость"], "33666": ["Аполлон Пифийский", "Подожди! Не действуй! Жди нужного момента, а пока затихни. Немного подождёшь и свершишь всё, о чём тревожишься"], "44466": ["Кронос", "Оставайся дома и никуда не ходи. Я не вижу твоё дело надёжным"], "34666": ["Мен Светоносный, бог Луны", "Смелее! У тебя есть возможность. Ты сделаешь, что хочешь, и в своё время получишь. Хорошо браться за дело, состязание и тяжбу"], "16666": ["Мать богов", "Как волки одолевают ягнят, а львы рогатых быков, так и ты всё одолеешь. Всё будет твоим, о чём просишь, с помощью Гермеса"], "44666": ["Зевс Подземный", "На твоём пути препятствия, не спеши, подожди. Путь трудный. Покупать тяжело, а продавать во вред"], "36666": ["Афродита Небесная", "Афродита пошлёт добрый ответ и откроет тебе путь. Ты избавишься и от болезни, и от изматывающей тревоги"]};
+  var bonesEl=document.getElementById("bones"), sumEl=document.getElementById("sum"), ansEl=document.getElementById("answer"), twist=document.getElementById("twist"), twistText=document.getElementById("twistText");
+  var throws=0, last=null;
+  function rnd(){ var a=new Uint32Array(1); (window.crypto||window.msCrypto).getRandomValues(a); return FACES[a[0]%4]; }
+  document.getElementById("throw").addEventListener("click",function(){
+    var vals=[],sum=0,html="";
+    for(var i=0;i<5;i++){ var v=rnd(); vals.push(v); sum+=v; html+='<div class="bone roll" style="animation-delay:'+(i*70)+'ms">'+v+'</div>'; }
+    bonesEl.innerHTML=html;
+    var key=vals.slice().sort().join(""), o=ORACLE[key];
+    var a=o?{god:o[0],text:o[1]}:{god:"lost",text:null};
+    throws++;
+    setTimeout(function(){
+      sumEl.textContent="Сумма: "+sum;
+      ansEl.innerHTML=a.text?'<div class="god">'+a.god+'</div><p>«'+a.text+'»</p>':'<div class="god">Эта строка не сохранилась</div><p class="hint">Время стёрло этот ответ с камня. Бросьте ещё раз</p>';
+      if(throws>=2 && last && last.god!==a.god && a.text){
+        twistText.textContent="Видите? Тот же вопрос, а ответ уже другой 😉 А планеты движутся по точным законам, и ваш денежный прогноз от броска не меняется. Введите дату рождения и посмотрите, что они говорят о ваших деньгах в этом месяце";
+      }
+      twist.classList.add("on");
+      last=a;
+    },650);
+  });
+})();
+</script>
+</body>
+</html>

@@ -742,6 +742,9 @@ function buildMonth(evs, month, monthCap, seed){
   document.getElementById("locks").innerHTML = lh;
 }
 
+/* Режим «только деньги» (17.10, вход из игры «Камень из Кибиры»): ?sfera=dengi показывает денежную сферу целиком */
+var MONEY_ONLY = /[?&]sfera=dengi/.test(location.search);
+
 function currentMonth(){
   var now = new Date(Date.now() + 3*3600*1000);
   return {y:now.getUTCFullYear(), m:now.getUTCMonth()};
@@ -776,6 +779,13 @@ function render(day, month1, year){
 
   var evs = findTransits(nat, r);
   buildMonth(evs, mo, monthCap, year*10000 + month1*100 + day);
+  if (MONEY_ONLY){
+    var spM = null; for (var q=0;q<SPHERES.length;q++) if (SPHERES[q].key==="money") spM = SPHERES[q];
+    document.getElementById("monthTitle").textContent = "Ваши деньги в " + MONTHS_PREP[mo];
+    document.getElementById("month").innerHTML = buildSphere(spM, evs, nat, r, mo);
+    var lk = document.querySelectorAll("#locks .lock");
+    if (lk.length) lk[0].style.display = "none";
+  }
 
   var res = document.getElementById("result");
   res.classList.remove("hidden");
