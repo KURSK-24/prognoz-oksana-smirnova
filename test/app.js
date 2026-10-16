@@ -743,7 +743,7 @@ function buildMonth(evs, month, monthCap, seed){
 }
 
 /* Режим «только деньги» (17.10, вход из игры «Камень из Кибиры»): ?sfera=dengi показывает денежную сферу целиком */
-var MONEY_ONLY = /[?&]sfera=dengi/.test(location.search);
+var MONEY_ONLY = /[?&]sfera=dengi/.test(location.search) || window.FORCE_MONEY === true;
 
 function currentMonth(){
   var now = new Date(Date.now() + 3*3600*1000);
