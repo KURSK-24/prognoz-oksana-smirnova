@@ -724,7 +724,9 @@ function buildMonth(evs, month, monthCap, seed){
     }
     html += '</ul>';
     var rest = evs.length - top.length;
-    if (rest > 0) html += '<p class="note-time">Кроме '+(top.length===2 ? 'этих двух' : 'неё')+', в '+MONTHS_PREP[month]+' у вас ещё '+rest+' '+plural(rest,'личная дата','личные даты','личных дат')+'. Какие из них про деньги, какие про отношения или работу, видно только по времени и месту рождения</p>';
+    if (rest > 0) html += '<div class="rest-box"><p class="rest-lead">Кроме '+(top.length===2 ? 'этих двух' : 'неё')+', в '+MONTHS_PREP[month]+' у вас ещё</p>'+
+      '<p class="rest-num"><span>'+rest+'</span> '+plural(rest,'личная дата','личные даты','личных дат')+'</p>'+
+      '<p class="rest-sub">Какие из них про деньги, какие про отношения или работу, видно только по времени и месту рождения</p></div>';
   }
   html += '</div>';
   document.getElementById("month").innerHTML = html;
