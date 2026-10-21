@@ -653,27 +653,27 @@ var TONE = {
 var LOCKS = [
   {key:"money", title:"Деньги", icon:"₽",
    txt:{none:"В деньгах месяц у вас тихий: небо почти не задевает ваши денежные точки. Хорошее время навести порядок, но ровный месяц легко сменяется резким",
-        soft:"В деньгах у вас больше поддержки, чем проверок. Самый удачный момент {s}: в такие дни просить и предлагать стоит смелее",
-        hard:"В деньгах у вас больше проверок, чем поддержки. Самый острый момент {h}: в такие дни деньги легко потерять на эмоциях или чужих обещаниях",
-        mix:"В деньгах у вас и окно, и ловушка в одном месяце: удачный момент {s}, острый {h}. Перепутать их дорого"},
+        soft:"В деньгах у вас больше поддержки, чем проверок. В удачные дни просить и предлагать стоит смелее",
+        hard:"В деньгах у вас больше проверок, чем поддержки. В острые дни деньги легко потерять на эмоциях или чужих обещаниях",
+        mix:"В деньгах у вас и окно, и ловушка в одном месяце. Перепутать их дорого"},
    btn:{none:"Узнать, когда в году придут большие деньги", soft:"Узнать, как не упустить это окно", hard:"Узнать, где утекут деньги и как это закрыть", mix:"Узнать, где окно, а где ловушка"}},
   {key:"love", title:"Отношения", icon:"♥",
    txt:{none:"В отношениях месяц спокойный: ваши точки любви почти не задеты. Погода в паре сейчас зависит от вас больше, чем от неба",
-        soft:"В отношениях у вас тёплый месяц: притяжения больше, чем трения. Самый мягкий момент {s}, хорошо для близости и важного разговора",
-        hard:"В отношениях у вас месяц трения: острых углов больше, чем тепла. Самый острый момент {h}, в такие дни ссора вспыхивает из мелочи",
-        mix:"В отношениях у вас качели: тепло {s} и напряжение {h}. Один и тот же человек может казаться то близким, то чужим"},
+        soft:"В отношениях у вас тёплый месяц: притяжения больше, чем трения. Есть мягкие дни для близости и важного разговора",
+        hard:"В отношениях у вас месяц трения: острых углов больше, чем тепла. В острые дни ссора вспыхивает из мелочи",
+        mix:"В отношениях у вас качели: есть и тёплые дни, и напряжённые. Один и тот же человек может казаться то близким, то чужим"},
    btn:{none:"Узнать, когда в году откроются двери для любви", soft:"Узнать, куда ведёт это тепло", hard:"Узнать, чем закончится этот узел", mix:"Узнать, к чему ведут эти качели"}},
   {key:"work", title:"Карьера и работа", icon:"◆",
    txt:{none:"В работе месяц ровный, без крупных поворотов. Хорошо закрывать хвосты, пока не начался следующий активный период",
-        soft:"В работе у вас ход вперёд: поддержки больше, чем помех. Самый сильный момент {s}, удачно заявить о себе",
-        hard:"В работе у вас давление: помех больше, чем поддержки. Самый острый момент {h}, в такие дни легко уйти на эмоциях",
-        mix:"В работе у вас и рывок, и тормоз: удачный момент {s}, острый {h}. Важно не перепутать, когда действовать"},
+        soft:"В работе у вас ход вперёд: поддержки больше, чем помех. Есть сильные дни, чтобы заявить о себе",
+        hard:"В работе у вас давление: помех больше, чем поддержки. В острые дни легко уйти на эмоциях",
+        mix:"В работе у вас и рывок, и тормоз. Важно не перепутать, когда действовать"},
    btn:{none:"Узнать, когда в году ваш карьерный рывок", soft:"Узнать, как превратить это в повышение", hard:"Узнать, уходить или переждать", mix:"Узнать, когда действовать, а когда ждать"}},
   {key:"power", title:"Здоровье и силы", icon:"☾",
    txt:{none:"По силам месяц ровный: самочувствие сейчас больше зависит от режима, чем от неба. Но спады в течение года у каждого приходятся на свои периоды",
-        soft:"По силам у вас подъём: энергии больше, чем обычно. Самый ресурсный момент {s}, хорошо браться за то, что откладывали",
-        hard:"По силам у вас месяц утечки: батарейка садится быстрее. Самый тяжёлый момент {h}, в такие дни важно не перегружать себя",
-        mix:"По силам у вас перепады: подъём {s} и спад {h}. Если не знать свои дни, легко выгореть на ровном месте"},
+        soft:"По силам у вас подъём: энергии больше, чем обычно. Есть ресурсные дни, чтобы браться за то, что откладывали",
+        hard:"По силам у вас месяц утечки: батарейка садится быстрее. В тяжёлые дни важно не перегружать себя",
+        mix:"По силам у вас перепады: есть и подъём, и спад. Если не знать свои дни, легко выгореть на ровном месте"},
    btn:{none:"Узнать, в какие периоды года беречь здоровье", soft:"Узнать, как удержать силы весь год", hard:"Узнать, как пройти спад без потерь", mix:"Узнать, когда в году беречь себя"}}
 ];
 
@@ -690,31 +690,31 @@ function buildMonth(evs, month, monthCap, seed){
   var T = TONE[tone];
   document.getElementById("monthTitle").textContent = "Ваш " + MONTHS_NOM[month] + ": " + T.tag;
 
-  /* ключевые даты: сильнейшие события, одна планета с одним характером один раз */
+  /* две важные даты: сильнейшие события, одна планета с одним характером один раз.
+     Сначала конкретные даты, а не «весь месяц»; в текущем месяце только те, что ещё впереди */
+  var cm = currentMonth(), today = (cm.m === month) ? new Date(Date.now() + 3*3600*1000).getUTCDate() : 0;
   var sorted = evs.slice().sort(function(a,b){ return b.w - a.w; }), seen = {}, top = [];
-  for (var i=0;i<sorted.length && top.length<5;i++){
-    var kk = sorted[i].T + (sorted[i].nature==="hard" ? "h" : "s");
-    if (!seen[kk]){ seen[kk] = 1; top.push(sorted[i]); }
+  var passes = [
+    function(e){ return !e.whole && (e.win ? e.win[1] : e.day) >= today; },
+    function(e){ return (e.whole || (e.win ? e.win[1] : e.day) >= today); },
+    function(e){ return true; }
+  ];
+  for (var ps=0; ps<passes.length && top.length<2; ps++){
+    for (var i=0;i<sorted.length && top.length<2;i++){
+      var kk = sorted[i].T + (sorted[i].nature==="hard" ? "h" : "s");
+      if (!seen[kk] && passes[ps](sorted[i])){ seen[kk] = 1; top.push(sorted[i]); }
+    }
   }
   var main = top[0];
+  /* общий фон месяца без лишних дат: остальные даты разбираются лично в прогнозе на год */
   var lead = T.lead;
-  if (main){
-    lead += '. Самая сильная точка месяца у вас ' + whenPhrase(main) + ': ' +
-            pick(DAY_A[main.T][main.nature==="hard" ? "hard" : "soft"], main.T+main.N+main.asp.a).toLowerCase();
-    var ns = 0, nh = 0;
-    for (var c=0;c<evs.length;c++) if (evs[c].nature==="hard") nh++; else ns++;
-    lead += '. Всего у вас ' + ns + ' ' + plural(ns,"поддерживающее событие","поддерживающих события","поддерживающих событий") + ' и ' + nh + ' ' + plural(nh,"напряжённое","напряжённых","напряжённых");
-    var second = null;
-    for (var c2=1;c2<top.length;c2++) if (top[c2].nature !== main.nature){ second = top[c2]; break; }
-    if (second) lead += '. А ' + whenPhrase(second) + ' ' + (second.nature==="hard" ? 'острый момент' : 'поддержка') + ': ' + pick(DAY_A[second.T][second.nature==="hard" ? "hard" : "soft"], second.T+second.N+second.asp.a).toLowerCase();
-    var diff = h1 - h2;
-    if (Math.abs(diff) > 2) lead += '. ' + (diff < 0 ? 'Первая половина месяца у вас тяжелее второй' : 'Вторая половина месяца у вас тяжелее первой');
-    else if (evs.length > 2) lead += '. Обе половины месяца у вас примерно одинаковые по нагрузке';
-  }
+  var diff = h1 - h2;
+  if (Math.abs(diff) > 2) lead += '. ' + (diff < 0 ? 'Первая половина месяца у вас тяжелее второй' : 'Вторая половина месяца у вас тяжелее первой');
+  else if (evs.length > 2) lead += '. Обе половины месяца у вас примерно одинаковые по нагрузке';
   top.sort(function(a,b){ return startKey(a) - startKey(b); });
   var html = '<div class="month-card"><span class="tag '+T.cls+'">'+T.tag+' месяц</span><p>'+lead+'</p>';
   if (top.length){
-    html += '<p><b>Ключевые даты '+MONTHS_GEN[month]+' по вашей дате рождения:</b></p><ul class="dates">';
+    html += '<p><b>'+(top.length===2 ? 'Две важные даты ' : 'Важная дата ')+MONTHS_GEN[month]+' по вашей дате рождения:</b></p><ul class="dates">';
     for (var t=0;t<top.length;t++){
       var e = top[t], nat = e.nature==="hard" ? "hard" : "soft";
       html += '<li class="'+e.nature+'"><span class="d">'+periodLabel(e, month)+'</span><span class="t">'+(e===main ? '<span class="main-tag">главное в месяце</span>' : '')+
@@ -722,7 +722,9 @@ function buildMonth(evs, month, monthCap, seed){
               '<span class="pm">'+aspLine(e)+(e.win && e.peak ? ', пик '+e.day+' '+MONTHS_GEN[e.month] : '')+'</span>'+
               '<span class="astro">'+aspPhrase(e.T, e.asp, e.N)+'</span></span></li>';
     }
-    html += '</ul><p class="note-time">Что каждая из этих дат значит именно для вас и что с ней делать, по одной дате рождения не видно</p>';
+    html += '</ul>';
+    var rest = evs.length - top.length;
+    if (rest > 0) html += '<p class="note-time">Кроме '+(top.length===2 ? 'этих двух' : 'неё')+', в '+MONTHS_PREP[month]+' у вас ещё '+rest+' '+plural(rest,'личная дата','личные даты','личных дат')+'. Какие из них про деньги, какие про отношения или работу, видно только по времени и месту рождения</p>';
   }
   html += '</div>';
   document.getElementById("month").innerHTML = html;
@@ -753,8 +755,41 @@ function currentMonth(){
   return {y:now.getUTCFullYear(), m:now.getUTCMonth()};
 }
 
+/* Следующий месяц открывается в калькуляторе с 27-го числа.
+   Октябрь 2026 - исключение: период захватывает и октябрь, и ноябрь, поэтому ноябрь открыт раньше.
+   В режиме «только деньги» (игра «Камень») остаётся один текущий месяц */
+function monthsToShow(){
+  var now = new Date(Date.now() + 3*3600*1000), cm = currentMonth(), list = [cm];
+  if (!MONEY_ONLY && (now.getUTCDate() >= 27 || (cm.y === 2026 && cm.m === 9))) list.push(cm.m === 11 ? {y:cm.y+1, m:0} : {y:cm.y, m:cm.m+1});
+  return list;
+}
+var BD = null, VIEW = monthsToShow();
 function render(day, month1, year){
-  var cm = currentMonth(), y = cm.y, mo = cm.m;
+  BD = [day, month1, year]; VIEW = monthsToShow();
+  showMonth(VIEW.length - 1);
+  document.getElementById("result").scrollIntoView({behavior:"smooth", block:"start"});
+}
+function monthTabs(idx){
+  if (VIEW.length < 2) return "";
+  var cm = VIEW[0], html = '<div class="mtabs" role="tablist">';
+  for (var i=0;i<VIEW.length;i++){
+    var nm = MONTHS_NOM[VIEW[i].m];
+    html += '<button type="button" role="tab" class="mtab'+(i===idx ? ' on' : '')+'" aria-selected="'+(i===idx)+'" data-i="'+i+'">'+nm.charAt(0).toUpperCase()+nm.slice(1)+'</button>';
+  }
+  html += '</div><p class="mtabs-note">' + (cm.y === 2026 && cm.m === 9
+    ? 'Прогноз на следующий месяц открывается здесь с 27-го числа. Но сейчас период особенный: он захватывает и октябрь, и ноябрь, поэтому свой ноябрь вы можете посмотреть уже сейчас'
+    : 'С 27-го числа здесь уже открыт ' + MONTHS_NOM[VIEW[1].m]) + '</p>';
+  return html;
+}
+document.addEventListener("click", function(e){
+  var t = e.target.closest ? e.target.closest(".mtab") : null;
+  if (!t || !BD) return;
+  showMonth(parseInt(t.getAttribute("data-i"), 10));
+});
+function showMonth(idx){
+  var day = BD[0], month1 = BD[1], year = BD[2], y = VIEW[idx].y, mo = VIEW[idx].m;
+  var tabsEl = document.getElementById("mtabs");
+  if (tabsEl) tabsEl.innerHTML = monthTabs(idx);
   var nat = A.natal(day, month1, year);
   useSky(y, mo);
   var r = monthRange(y, mo);
@@ -790,9 +825,7 @@ function render(day, month1, year){
     if (lk.length) lk[0].style.display = "none";
   }
 
-  var res = document.getElementById("result");
-  res.classList.remove("hidden");
-  res.scrollIntoView({behavior:"smooth", block:"start"});
+  document.getElementById("result").classList.remove("hidden");
 }
 
 /* ---------- селекты даты ---------- */
@@ -808,13 +841,18 @@ fillSelect(selMonth, 1, 12, MONTHS_NOM, "Месяц");
 fillSelect(selYear, new Date().getFullYear(), 1930, null, "Год");
 
 (function(){
-  var cm = currentMonth();
+  var a = VIEW[0], b = VIEW[1];
   var els = document.querySelectorAll(".cur-month");
-  for (var i=0;i<els.length;i++) els[i].textContent = (els[i].getAttribute("data-case")==="prep" ? MONTHS_PREP : MONTHS_NOM)[cm.m] + " " + cm.y;
+  for (var i=0;i<els.length;i++){
+    var M = els[i].getAttribute("data-case")==="prep" ? MONTHS_PREP : MONTHS_NOM;
+    els[i].textContent = !b ? M[a.m] + " " + a.y : (a.y === b.y ? M[a.m] + " и " + M[b.m] + " " + b.y : M[a.m] + " " + a.y + " и " + M[b.m] + " " + b.y);
+  }
+  var h = document.getElementById("h1Month");
+  if (h && b) h.textContent = "на " + MONTHS_NOM[a.m] + " и " + MONTHS_NOM[b.m];
 })();
 
 /* Небо текущего месяца считаем заранее, пока человек выбирает дату: кнопка срабатывает сразу */
-setTimeout(function(){ try{ var cm = currentMonth(); useSky(cm.y, cm.m); }catch(e){} }, 300);
+setTimeout(function(){ try{ var v = VIEW[VIEW.length-1]; useSky(v.y, v.m); }catch(e){} }, 300);
 
 /* Подарок за расчёт: прогноз на год 6 990 вместо 12 000 ровно 24 часа с первого расчёта на этом устройстве */
 var GIFT_KEY = "oksana_god_gift_started", GIFT_MS = 24*3600*1000;
