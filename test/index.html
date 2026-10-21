@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Ваш месяц по дате рождения</title>
 <meta name="description" content="Личный расчёт месяца по дате рождения: транзиты к вашим планетам, деньги, любовь, работа, силы. Финансовый астролог Оксана Смирнова">
 <meta name="theme-color" content="#F6EEE3">
@@ -222,6 +222,10 @@ label{display:block; font-size:10.5px; font-weight:600; letter-spacing:.28em; te
 .month-card .note-time{font-size:13px; color:var(--on-dark-3); margin:6px 0 0}
 .locks-h{text-align:center; margin:40px 0 8px}
 .locks-sub{text-align:center; margin:0 0 20px}
+.mtabs{display:flex; gap:8px; justify-content:center; margin:20px auto 0; max-width:420px}
+.mtab{flex:1; min-height:48px; border-radius:14px; border:1px solid var(--line-2); background:transparent; color:var(--esp); font:inherit; font-weight:700; font-size:12px; letter-spacing:.16em; text-transform:uppercase; cursor:pointer}
+.mtab.on{background:var(--goldfill); border-color:transparent; box-shadow:0 8px 20px rgba(60,36,18,.14)}
+.mtabs-note{margin:12px auto 0; max-width:520px; font-size:14px; color:var(--ink-2)}
 .locks{display:grid; grid-template-columns:1fr 1fr; gap:12px}
 @media (max-width:520px){ .locks{grid-template-columns:1fr} }
 .lock{background:var(--paper); border:1px solid var(--line); border-radius:20px; padding:18px; display:flex; flex-direction:column; gap:8px}
@@ -345,7 +349,7 @@ footer a{color:var(--caramel-d)}
   <div class="hero-img"><img src="foto/oksana-4-vecher.jpg" alt="Оксана Смирнова, финансовый астролог" fetchpriority="high"></div>
   <div class="brand"><div class="wrap"><div class="sig"><span class="sig-name">Оксана<span>Смирнова</span></span><span class="sig-role">финансовый астролог</span></div></div></div>
   <div class="hero-pill" style="--pt:clamp(178px,47vw,210px)"><div class="wrap"><div class="pill soft">◆ Расчёт по реальным планетам</div>
-    <h1>Ваш прогноз по дате рождения <em>на текущий месяц</em></h1></div></div>
+    <h1>Ваш прогноз по дате рождения <em id="h1Month">на текущий месяц</em></h1></div></div>
 </section>
 <section class="band cream2 form-band">
   <svg class="deco" style="right:-120px;top:-110px;width:340px;height:340px;opacity:.45" viewBox="0 0 200 200" aria-hidden="true">
@@ -388,6 +392,7 @@ footer a{color:var(--caramel-d)}
         <div class="eyebrow">Ваш знак</div>
         <div class="sign" id="signLine"></div>
         <div class="dateline" id="dateLine"></div>
+        <div id="mtabs"></div>
         <div class="bg-card">
           <div class="eyebrow">Общий фон на месяц</div>
           <p id="skyText">Общий фон для вашего знака</p>
@@ -404,7 +409,7 @@ footer a{color:var(--caramel-d)}
       <div id="month"></div>
 
       <h3 class="locks-h">Как этот месяц сыграет в вашей жизни</h3>
-      <p class="locks-sub">Даты выше посчитаны по вашей дате рождения. Что они значат именно для вас, в деньгах, отношениях или работе, видно только по времени и месту рождения</p>
+      <p class="locks-sub">Даты выше я посчитала по вашей дате рождения. Но одна и та же планета у каждого человека затрагивает разные сферы. Даже у двух людей, родившихся в один день, но в разное время, месяц может пройти совсем по-разному. Что значат эти даты именно для вас, что с этим делать и как прожить трудный период легче, я разбираю лично в прогнозе на год</p>
       <div class="locks" id="locks"></div>
     </div>
   </section>
