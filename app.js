@@ -883,9 +883,9 @@ document.getElementById("form").addEventListener("submit", function(e){
   e.preventDefault();
   var err = document.getElementById("err");
   var day = +selDay.value, month1 = +selMonth.value, year = +selYear.value;
-  if (!day || !month1 || !year){ err.classList.add("on"); return; }
+  if (!day || !month1 || !year){ err.classList.add("on"); goal("form_error"); return; }
   var test = new Date(year, month1-1, day);
-  if (test.getDate() !== day || test.getMonth() !== month1-1){ err.classList.add("on"); return; }
+  if (test.getDate() !== day || test.getMonth() !== month1-1){ err.classList.add("on"); goal("form_error"); return; }
   err.classList.remove("on");
   render(day, month1, year);
   startGift();
@@ -899,6 +899,25 @@ document.addEventListener("click", function(e){
   else if (e.target.closest(".js-loop")) goal("click_loop");
   else if (e.target.closest(".js-channel")) goal("click_channel");
 });
+
+/* Цели досмотра: до какого блока дошёл человек после расчёта, каждая один раз за визит */
+(function(){
+  var steps = [["spheres-start","see_spheres"], ["year","see_year"], ["service","see_service"], ["ctaYear","see_button"]];
+  var busy = false;
+  function check(){
+    busy = false;
+    if (document.getElementById("result").classList.contains("hidden")) return;
+    var edge = window.innerHeight * 0.6;
+    steps = steps.filter(function(s){
+      var el = document.getElementById(s[0]);
+      if (el && el.getBoundingClientRect().top < edge){ goal(s[1]); return false; }
+      return true;
+    });
+    if (!steps.length) window.removeEventListener("scroll", onScroll);
+  }
+  function onScroll(){ if (!busy){ busy = true; setTimeout(check, 250); } }
+  window.addEventListener("scroll", onScroll, {passive:true});
+})();
 
 window.__PROGNOZ_TEST = {useSky:useSky, natal:A.natal, findTransits:findTransits, monthRange:monthRange, moonDays:moonDays, render:render};
 })();
