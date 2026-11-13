@@ -902,7 +902,7 @@ document.addEventListener("click", function(e){
 
 /* Цели досмотра: до какого блока дошёл человек после расчёта, каждая один раз за визит */
 (function(){
-  var steps = [["spheres-start","see_spheres"], ["year","see_year"], ["service","see_service"], ["ctaYear","see_button"]];
+  var steps = [["spheres-start","see_spheres"], ["year","see_year"], ["year-theory","see_method"], ["comp","see_comp"], ["service","see_service"], ["ctaYear","see_button"]];
   var busy = false;
   function check(){
     busy = false;
