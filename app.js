@@ -856,9 +856,9 @@ fillSelect(selYear, new Date().getFullYear(), 1930, null, "Год");
 /* Небо текущего месяца считаем заранее, пока человек выбирает дату: кнопка срабатывает сразу */
 setTimeout(function(){ try{ var v = VIEW[VIEW.length-1]; useSky(v.y, v.m); }catch(e){} }, 300);
 
-/* Подарок за расчёт: прогноз на год 6 990 вместо 12 000 ровно 24 часа с первого расчёта на этом устройстве */
+/* Подарок за расчёт: прогноз на год 7 990 вместо 12 000 ровно 24 часа с первого расчёта на этом устройстве */
 var GIFT_KEY = "oksana_god_gift_started", GIFT_MS = 24*3600*1000;
-var MSG_GIFT = "https://t.me/okssmi?text=" + encodeURIComponent("Здравствуйте! Хочу прогноз на год по подарку 6 990");
+var MSG_GIFT = "https://t.me/okssmi?text=" + encodeURIComponent("Здравствуйте! Хочу прогноз на год по подарку 7 990");
 var MSG_GOD = "https://t.me/okssmi?text=" + encodeURIComponent("ГОД");
 function startGift(){
   var started = null;
@@ -871,7 +871,7 @@ function startGift(){
     var left = t0 + GIFT_MS - Date.now();
     if (left <= 0){ box.classList.remove("on"); if (cta){ cta.href = MSG_GOD; cta.textContent = "Написать мне слово ГОД"; } return; }
     box.classList.add("on");
-    if (cta){ cta.href = MSG_GIFT; cta.textContent = "Забрать прогноз на год за 6 990 ₽"; }
+    if (cta){ cta.href = MSG_GIFT; cta.textContent = "Забрать прогноз на год за 7 990 ₽"; }
     var h = Math.floor(left/3600000), m = Math.floor(left%3600000/60000), sec = Math.floor(left%60000/1000);
     clock.textContent = (h<10?"0":"")+h+":"+(m<10?"0":"")+m+":"+(sec<10?"0":"")+sec;
     setTimeout(tick, 1000);
